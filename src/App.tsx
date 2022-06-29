@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import './test/_custom.scss';
-import {GetRequestAsyncAwait} from './request/requestko'
+import GetRequestAsyncAwait from './request/test'
 import './test/_custom.scss'
 
 type Props = { title: string, children: JSX.Element,};
@@ -21,11 +21,11 @@ const Box: React.FC<Props> = ({
 function App() {
   return (
     <div>
-    <Box title="tamina">
-       <h1>helo po</h1>
-     </Box>
-             >
-        <GetRequestAsyncAwait />
+        <Box title="tamina">
+           <h1>helo po</h1>
+        </Box>
+        <GetRequestAsyncAwait>    
+        </GetRequestAsyncAwait>
      </div>
 
 )}
