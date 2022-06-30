@@ -1,13 +1,11 @@
 import React from 'react';
 import './App.css';
-import Box from './componets/whether/weather';
+import Weather from './componets/Weather/weather';
 
 function App() {
   return (
     <div>
-        <Box title="tamina">
-           <h1>helo po</h1>
-        </Box>
+        <Weather/>
      </div>
 
 )}
