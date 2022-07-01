@@ -3,6 +3,7 @@ import GetRequestAsyncAwait from '../request/requestko'
 import Box from "./Box/Box";
 import Grid from "./Grid/Grid";
 import GridRuler from "./GridRuler/GridRuler";
+import Row from '../request/test'
 
 
 function Weather() {
@@ -11,6 +12,11 @@ function Weather() {
       className="Weather"
       style={{ margin: "16px", position: "relative", height: "100vh" }}
     >
+      <div >
+      <Row title = "tamina" fetchUrl='https://ktc-ph-api.herokuapp.com/?format=json' >
+      </Row> 
+
+      </div>
       <GridRuler spacing="sm"></GridRuler>
 
       <Grid
