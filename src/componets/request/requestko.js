@@ -1,12 +1,12 @@
 import React from 'react';
 
 
-class GetRequestAsyncAwait extends React.Component 
-
-    
-
-{
-    constructor(props) {super(props);this.state={totalReactPackages: null} };
+class GetRequestAsyncAwait extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state={totalReactPackages: null};
+         
+    };
 
     async componentDidMount() {
         // GET request using fetch with async/await

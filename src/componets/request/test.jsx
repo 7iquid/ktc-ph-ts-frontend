@@ -2,14 +2,15 @@ import React,{useState, useEffect} from "react";
 import axios from "axios";
 
 
-function Row({title, fetchUrl, ...props}){
+function Row(){
 	const [movies, setMovies] = useState([]);
 
 	useEffect(() =>{
 		async function fetchData(){
+			let fetchUrl ='https://ktc-ph-api.herokuapp.com/?format=json'
 			const request = await axios.get(fetchUrl);
 			setMovies(request);
-			console.log(request)
+			console.log(movies)
 			return request;
 		}
 		fetchData();
@@ -17,11 +18,9 @@ function Row({title, fetchUrl, ...props}){
 	},[]);
 
 	return(
-		<div>
+		<div data={movies}>
 			<h2>movie title</h2>
-			<h2>{setMovies}</h2>
-
-
+			
 		</div>
 	)
 }
