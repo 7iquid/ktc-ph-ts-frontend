@@ -8,17 +8,18 @@ import Row from '../request/test';
 
 function Weather() {
   console.log(Day())
+  let weat = "normal"
   return (
     <div
       className="Weather"
       style={{ margin: "16px", position: "relative", height: "100vh" }}
     >
-      <div >
+ {/*     <div >
       <GetWeatherData/>
 
       <Row/>
 
-      </div>
+      </div>*/}
       <GridRuler spacing="sm"></GridRuler>
 
       <Grid

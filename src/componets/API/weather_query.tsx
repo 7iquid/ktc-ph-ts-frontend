@@ -3,7 +3,8 @@ import axios from "axios";
 
 
 export function Day(){
-    const [data1, setdata1] = useState(0);
+    const [data1, setdata1] = useState<Array<string>>([]);
+    const weat = "normal"
     useEffect(() =>{
         async function fetchData(){
             let fetchUrl ='https://ktc-ph-api.herokuapp.com/?format=json'
