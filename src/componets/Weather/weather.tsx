@@ -1,19 +1,22 @@
 import React from 'react';
-import GetRequestAsyncAwait from '../request/requestko'
 import Box from "./Box/Box";
 import Grid from "./Grid/Grid";
 import GridRuler from "./GridRuler/GridRuler";
-import StateHooksComponent from '../API/weather_query';
+import GetWeatherData,{Day}from '../API/weather_query';
+import Row from '../request/test';
 
 
 function Weather() {
+  console.log(Day())
   return (
     <div
       className="Weather"
       style={{ margin: "16px", position: "relative", height: "100vh" }}
     >
       <div >
-      <StateHooksComponent/>
+      <GetWeatherData/>
+
+      <Row/>
 
       </div>
       <GridRuler spacing="sm"></GridRuler>
