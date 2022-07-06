@@ -2,16 +2,12 @@ import React,{useState, useEffect, FunctionComponent} from "react";
 import axios from "axios";
 
 
-export function Day(){
+export function WeatherDataGet(){
     const [data1, setdata1] = useState<Array<string>>([]);
-    const weat = "normal"
     useEffect(() =>{
         async function fetchData(){
             let fetchUrl ='https://ktc-ph-api.herokuapp.com/?format=json'
-            // const setdata1 = await axios.get(fetchUrl);
             setdata1(await axios.get(fetchUrl));
-            // const [wearablesList, request] = useState<Props[]>([]);
-            // console.log(data1)
             return 'ok';
         }
         fetchData();

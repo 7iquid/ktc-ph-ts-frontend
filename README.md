@@ -4,10 +4,10 @@
 
 	* git clone: 'https://github.com/7iquid/ktc-ph-ts-frontend.git'
 
-	* ```cd ktc-ph-ts-frontend```
-	* ```npm install```
-	* ```npm start```
-	* enjoy
+	```cd ktc-ph-ts-frontend```
+	```npm install```
+	```npm start```
+	 enjoy
 
 
 # todo list

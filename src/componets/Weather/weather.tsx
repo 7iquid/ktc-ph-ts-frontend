@@ -2,54 +2,43 @@ import React from 'react';
 import Box from "./Box/Box";
 import Grid from "./Grid/Grid";
 import GridRuler from "./GridRuler/GridRuler";
-import GetWeatherData,{Day}from '../API/weather_query';
+import GetWeatherData,{WeatherDataGet}from '../API/weather_query';
 import Row from '../request/test';
 
 
+
+
 function Weather() {
-  console.log(Day())
-  let weat = "normal"
+  // console.log(Day())
+  let data = WeatherDataGet()
+  // let current:string = data.state
+
   return (
     <div
       className="Weather"
-      style={{ margin: "16px", position: "relative", height: "100vh" }}
+      style={{ 
+      margin: "auto", 
+      marginTop: "60px",
+      // position: "relative", 
+      height: "100vh",
+      width: "50%",
+      flex :'center',
+
+       }}
     >
- {/*     <div >
-      <GetWeatherData/>
 
-      <Row/>
+          <Box>
+{cards?.items.map((card: ICardItem) => {
+         return <WeatherDataGet
+          key={data.id}
+          id={data.id}
+          img={data.img}
+          gender={data.gender}
+          name={data.name}
+         />;
+    })}        
+          </Box>
 
-      </div>*/}
-      <GridRuler spacing="sm"></GridRuler>
-
-      <Grid
-        container
-        spacing="sm"
-        alignItems="center"
-        style={{ height: "100%" }}
-      >
-        <Grid item xs={1} sm={6} md={4} lg={3}>
-          <Box>Box 1</Box>
-        </Grid>
-
-        <Grid item xs={1} sm={6} md={4} lg={3}>
-          <Box>Box 2</Box>
-        </Grid>
-
-        <Grid item xs={1} sm={6} md={4} lg={3}>
-          <Box>Box 3</Box>
-        </Grid>
-
-        <Grid item xs={1} sm={6} md={4} lg={3}>
-          <Box>Box 4</Box>
-        </Grid>
-                <Grid item xs={1} sm={6} md={4} lg={3}>
-          <Box>Box 4</Box>
-        </Grid>
-                <Grid item xs={1} sm={6} md={4} lg={3}>
-          <Box>Box 4</Box>
-        </Grid>
-      </Grid>
     </div>
   );
 }
