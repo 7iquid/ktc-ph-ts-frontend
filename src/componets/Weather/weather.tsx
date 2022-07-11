@@ -19,15 +19,23 @@ function Weather() {
       style={{ 
       margin: "auto", 
       marginTop: "60px",
-      // position: "relative", 
+      position: "relative", 
       height: "100vh",
       width: "50%",
       flex :'center',
 
        }}
     >
+    <Grid>
+    <Box >
+      asdwasd
+    </Box>
+    <Box >
+      asdwasd
+    </Box>
+    </Grid>
 
-          <Box>
+  {/*        <Box>
 {cards?.items.map((card: ICardItem) => {
          return <WeatherDataGet
           key={data.id}
@@ -37,7 +45,7 @@ function Weather() {
           name={data.name}
          />;
     })}        
-          </Box>
+          </Box>*/}
 
     </div>
   );

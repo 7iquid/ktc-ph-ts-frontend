@@ -1,3 +1,5 @@
+@use './constants' as const;
+
 .App {
   text-align: center;
 }
@@ -38,10 +40,7 @@
 }
 
 
-.body{ 
-  background-color: #008B8B; 
-}
-.backgroundGradient {
-    background: linear-gradient(to bottom, white, #008B8B);
-    color: white;
-}
+
+body{ 
+  background: linear-gradient(const.$default-bg-gradient);
+};
