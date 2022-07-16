@@ -2,11 +2,13 @@
 // @use '../weather.scss' as const;
 
 .Box {
+  // size
   padding: const.$box-padding;
   border-radius: const.$box-radius;
   margin-top: const.$box-margin-top-bottom;
   margin-bottom: const.$box-margin-top-bottom;
   
+  //color
   color: const.$default-text-color;
   background-color: const.$default-bg-boxes-color;
   box-shadow: const.$default-shadow;
