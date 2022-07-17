@@ -2,21 +2,23 @@ import React,{useState,useEffect} from 'react';
 import Box from "./Box/Box";
 import Grid from "./Grid/Grid";
 import GridRuler from "./GridRuler/GridRuler";
-import {WeatherDataGet} from '../API/weather_query';
+import {WeatherDataGet, defaultparam} from '../API/weather_query';
 import Row from '../request/test';
 import styles from "./weather.module.scss";
 
-// import Users from '../test/testaxiox';
-// import './weathers.scss';
-// import styles from "./Box.module.scss";
-
 
 function Weather() {
-  let namess = '111111111'
+  const [WeatherDataGetresponse, setWeatherDataGetresponse] = useState<any>();
+  let a = WeatherDataGet()
+  let name = 'name'
+  try{name = a.location.name}catch{}
+  // console.log(name);
+  // console.log(1);
+  
   return (
     <div   className={styles.style}  >
       <Box >
-        <WeatherDataGet/>
+        {name}
       </Box>
       <Box >
         
