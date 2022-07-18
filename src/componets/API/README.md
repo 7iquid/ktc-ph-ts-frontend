@@ -5,19 +5,19 @@
 how to query using function
 
 
-`code( 
+```javascript
 import WeatherDataGet from './API/weather_query' 
 // 
 function Sample_get(){
 	let data = WeatherDataGet()
 	console.log(data)
 	}
-)`
-```javascript
+
+
 ```
 
 *default sample output*
-`code(
+```json
 {
     "location": {
         "name": "Manila",
@@ -59,8 +59,7 @@ function Sample_get(){
         "gust_kph": 5
     }
 }
-)`	
-```javascript
+
 ```
 
 

@@ -1,21 +1,30 @@
-import React,{useState, useEffect, FC,ReactNode} from "react";
+import React,{useState, useEffect, FC, ReactNode} from "react";
 import axios from "axios";
 
-interface paramsko {
+interface paramsko  {
     api_key?:string ,
     weather_url?:string ,
     json_path?:string ,
     lat: number ,
     lon: number ,
+    
 }
-export const defaultparam={
+
+export const defaultparam ={
     api_key :    '8daf2b94b0ef4115bde152002222506',
     weather_url : 'http://api.weatherapi.com/v1',
     json_path :   '/current.json',
     lat :14.6,
-    lon :120.98,
-
+    lon :20.98,
+    
 }
+type Test = 'name'|'names';
+type default_outpu={
+    "location":Array<{}>,
+    "current": Array<{}>,
+}
+
+
 export function WeatherDataGet(params:paramsko = defaultparam){
     const [response, setresponse] = useState<any>();
     const [loading, setLoading] = useState(true)
@@ -49,3 +58,16 @@ function CheckLocation(){
 
     return locator
 }
+
+export const TestingHooks: FC<{ 
+    children: ReactNode; 
+    params:string; 
+}> = ({ 
+    children,
+    params, 
+}) => {
+    let namer = "tatay"
+    console.log(3, 'TestingHooks')
+    return <div >{children}  {namer} {params}</div>;
+};
+
