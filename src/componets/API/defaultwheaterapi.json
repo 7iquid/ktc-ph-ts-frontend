@@ -1,0 +1,41 @@
+{
+    "location": {
+        "name": "Loading",
+        "region": "Loading",
+        "country": "Loading",
+        "lat": 0.0,
+        "lon": 0.0,
+        "tz_id": "Loading",
+        "localtime_epoch": 1658072273,
+        "localtime": "2022-07-17 23:37"
+    },
+    "current": {
+        "last_updated_epoch": 1658071800,
+        "last_updated": "2022-07-17 23:30",
+        "temp_c": 0.0,
+        "temp_f": 0.0,
+        "is_day": 0.0,
+        "condition": {
+            "text": "Loading",
+            "icon": "//cdn.weatherapi.com/weather/64x64/night/116.png",
+            "code": 0.0
+        },
+        "wind_mph": 0.0,
+        "wind_kph": 0.0,
+        "wind_degree": 0.0,
+        "wind_dir": "Loading",
+        "pressure_mb": 0.0,
+        "pressure_in": 0.0,
+        "precip_mm": 0.0,
+        "precip_in": 0.0,
+        "humidity": 0.0,
+        "cloud": 0.0,
+        "feelslike_c": 0.0,
+        "feelslike_f": 0.0,
+        "vis_km": 0.0,
+        "vis_miles": 0.0,
+        "uv": 0.0,
+        "gust_mph": 0.0,
+        "gust_kph": 0.0
+    }
+}
