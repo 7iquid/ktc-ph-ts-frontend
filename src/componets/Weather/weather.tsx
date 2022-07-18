@@ -21,7 +21,7 @@ function Weather() {
     return (
       <div   className={styles.style}  >
 
-        <Box justifyContent='space-between'>
+        <Box justifyContent='center'>
         {response.location.region}
         
         <img src={linker}></img>

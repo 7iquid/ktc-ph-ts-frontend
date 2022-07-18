@@ -6,11 +6,13 @@ type JustifyContent = "flex-start" | "center" | "flex-end" | "space-between";
 
 const Box: FunctionComponent<{ children: ReactNode, justifyContent?:JustifyContent, }> = ({ children,justifyContent }) => {
   const classNames = cn({
-  
-    [styles[`Grid_justifyContent_${justifyContent}`]]: justifyContent,
- 
-  });
-  return <div className={styles.Box}>{children}</div>;
+      [styles[`Grid_justifyContent_${justifyContent}`]]: justifyContent,
+   });
+  return <div  className={styles.Box}>
+          <div className={classNames}>
+            {children}
+          </div>;
+        </div>;
 };
 
 export default Box;
