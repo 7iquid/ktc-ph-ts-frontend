@@ -33,14 +33,14 @@ function CheckLocation(){
     return locator
 }
 
-export function WeatherDataGet(para:paramsko = defaultparam){
+export function WeatherDataGet(){
     // console.log(2 , 'WeatherDataGet', params);
     let data =DefaultWetherApi
     const [response, setresponse] = useState<any>(DefaultWetherApi);
     const [loading, setLoading] = useState(true)
     let [lat,lon]  =CheckLocation()
     let maploc:any =defaultparam.weather_url + defaultparam.api_key +lat +' '+lon+ '&aqi=no'
-    console.log(maploc)
+    // console.log(maploc)
     useEffect(() =>{
         axios 
         // .get('https://ktc-ph-api.herokuapp.com/?format=json')
@@ -48,54 +48,29 @@ export function WeatherDataGet(para:paramsko = defaultparam){
         .then(res =>{
             setLoading(false)
             setresponse(res.data)
-            console.log(2,'WeatherDataGet', res.data)
         })
         .catch(err =>{
             setLoading(false)
         });
     },[]);
-    
-    
-    // try{data = response}catch{data =DefaultWetherApi}
-
-    // if (!response){data = response}else{data =DefaultWetherApi}
-    // console.log(2,'WeatherDataGet', data);
     return [loading,response]; 
 }
 
 
-export const TestingHooks: FC<{ 
-    children: ReactNode; 
-    params:any;
-    src?: string | undefined; 
-}> = ({ 
-    children,
-    params, 
-}) => {
-    let namer = "tatay"
-    let name2 = children
-    console.log(3, 'TestingHooks',params)
-    console.log(3, 'TestingHooks', )
-    const el = <Card title="Welcome!" paragraph="To this example" />
-    return <div >  {namer}  {params} {el}</div>;
-};
+// type CardProps = {
+//   title: string,
+//   paragraph: string
+//   children?: ReactNode;
+// }
 
-
-type CardProps = {
-  title: string,
-  paragraph: string
-  children?: ReactNode;
-
-}
-
-export const Card: FC<CardProps> = ({ title, paragraph }: CardProps) => {
-let namess ="get tje ball"    
-return <aside>
-  <h2>{ title }</h2>
-  <p>
-    { paragraph } { namess }
-  </p>
-</aside>
-};
+// export const Card: FC<CardProps> = ({ title, paragraph }: CardProps) => {
+// let namess ="get tje ball"    
+// return <aside>
+//   <h2>{ title }</h2>
+//   <p>
+//     { paragraph } { namess }
+//   </p>
+// </aside>
+// };
 
 

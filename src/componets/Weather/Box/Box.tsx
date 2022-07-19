@@ -11,8 +11,8 @@ const Box: FunctionComponent<{ children: ReactNode, justifyContent?:JustifyConte
   return <div  className={styles.Box}>
           <div className={classNames}>
             {children}
-          </div>;
-        </div>;
+          </div>
+        </div>
 };
 
 export default Box;
