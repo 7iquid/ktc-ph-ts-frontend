@@ -9,9 +9,10 @@ how to query using function
 import WeatherDataGet from './API/weather_query' 
 // 
 function Sample_get(){
-	let data = WeatherDataGet()
-	console.log(data)
-	}
+	let [status,response] = WeatherDataGet();
+	console.log(data);
+	if(status){return(<></>)}else{return(<>{response.location.name}</>)};
+    }
 
 
 ```
@@ -62,9 +63,9 @@ function Sample_get(){
 
 ```
 
-
+<!-- 
 `http://api.weatherapi.com/v1/current.json?key=8daf2b94b0ef4115bde152002222506 &q=London&aqi=no`
-
+ -->
 
 
 
