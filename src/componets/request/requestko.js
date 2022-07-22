@@ -5,9 +5,11 @@ import itirateko from '../_testko/arrayko'
 class GetRequestAsyncAwait extends React.Component{
     constructor(props) {
         super(props);
+
         this.state={totalReactPackages: null} 
         this.data =[]
         console.log(this.data, '========>1')
+
     };
 
     async componentDidMount() {

@@ -1,0 +1,19 @@
+@use '../../constants' as const;
+
+
+// size
+$weather-page-center: auto;
+$weather-page-top-space: 70px;
+$weather-page-new-plain: relative;
+$weather-page-component-size: 100vh;
+$weather-page-width-size: 50%;
+
+
+.style {
+
+      margin: $weather-page-center; 
+      margin-top: $weather-page-top-space;
+      position: $weather-page-new-plain;
+      height: $weather-page-component-size;
+      width: $weather-page-width-size;
+};
