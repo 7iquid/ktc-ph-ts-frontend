@@ -8,6 +8,7 @@ import styles from "./weather.module.scss";
 
 
 function Weather() {
+  
   let [status,response] = WeatherDataGet()
   if(status){
   return (
