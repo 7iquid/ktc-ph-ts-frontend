@@ -7,14 +7,57 @@ import Row from '../request/test';
 import styles from "./weather.module.scss";
 
 
+let tesname ={
+    'food':'tinapay',
+    'drinks':'softdrinks',
+  
+};
+
 function Weather() {
   let [status,response] = WeatherDataGet()
   if(status){
   return (
-    <div   className={styles.style}  >
-      <Box >
-        Loading....
-      </Box>
+
+      className="Weather"
+      style={{ margin: "11px", position: "relative", height: "100vh" }}
+    >
+      {/*<GridRuler spacing="lg"></GridRuler>*/}
+
+      <Grid
+        container
+        spacing="sm"
+        alignItems="center"
+        style={{ height: "100%" }}
+      >
+        <Grid item xs={1} sm={6} md={4} lg={3}>
+          <Box>
+            <GetRequestAsyncAwait/>
+
+          </Box>
+        </Grid>
+
+{/*        <Grid item xs={1} sm={6} md={4} lg={3}>
+          <Box>Box 2</Box>
+        </Grid>
+
+        <Grid item xs={1} sm={6} md={4} lg={3}>
+          <Box>Box 3</Box>
+        </Grid>
+
+        <Grid item xs={1} sm={6} md={4} lg={3}>
+          <Box>Box 4</Box>
+        </Grid>
+
+        <Grid item xs={1} sm={6} md={4} lg={3}>
+          <Box>Box 4</Box>
+        </Grid>
+
+        <Grid item xs={1} sm={6} md={4} lg={3}>
+          <Box>Box 4</Box>
+        </Grid>*/}
+
+      </Grid>
+
     </div>
   );
   }else{let linker ='https:'+response.current.condition.icon;
