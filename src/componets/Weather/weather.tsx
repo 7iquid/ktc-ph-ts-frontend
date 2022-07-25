@@ -3,9 +3,8 @@ import Box from "./Box/Box";
 import Grid from "./Grid/Grid";
 import GridRuler from "./GridRuler/GridRuler";
 import  {WeatherDataGet, defaultparam, DefaultWetherApi} from '../API/weather_query';
-import Row from '../request/test';
 import styles from "./weather.module.scss";
-
+import { Parent } from '../test/test_context';
 
 function Weather() {
   
@@ -49,8 +48,24 @@ function Weather() {
             </Box>
          
         </Box>
+
+        <Box >
+           <Parent/>
+        </Box>
       </div>
     )
   }
 }
 export default Weather;
+
+
+export const Teshook =(props:any)=>{
+  const [response, setresponse] = useState<any>(); 
+  return(
+    <>
+       <div   className={styles.style}  >
+       awdcawrawrf {props.data}
+       </div>
+    </>
+    )
+}

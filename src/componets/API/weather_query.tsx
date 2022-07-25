@@ -24,12 +24,15 @@ export const defaultparam ={
 }
 
 function CheckLocation(){
-    const [locator, setlocator] = useState<[number,number]>([14.6,120.98]);
+    const [locator, setlocator] = useState<[number,number]>([19.6,100.98]);
+    
     useEffect(() =>{
         navigator.geolocation.getCurrentPosition((position)=> {
         setlocator([position.coords.latitude,  position.coords.longitude])
-    });
+        console.log(3, 'CheckLocation', locator)
+        });
     },locator);
+    
     return locator
 }
 
@@ -57,20 +60,34 @@ export function WeatherDataGet(){
 }
 
 
-// type CardProps = {
-//   title: string,
-//   paragraph: string
-//   children?: ReactNode;
-// }
+type loc = {
+  lon: number,
+  lat: number,
+  children?: ReactNode;
+}
+let loc1 = {
+    lon: 19.6,
+    lat: 100.98
+}
 
-// export const Card: FC<CardProps> = ({ title, paragraph }: CardProps) => {
-// let namess ="get tje ball"    
-// return <aside>
-//   <h2>{ title }</h2>
-//   <p>
-//     { paragraph } { namess }
-//   </p>
-// </aside>
-// };
+
+
+export const Card: FC<loc> = (loco =loc1) => {
+    const [response, setresponse] = useState<any>(); 
+    let maploc:any =defaultparam.weather_url + defaultparam.api_key +loco.lat +' '+loco.lon+ '&aqi=no'
+    useEffect(() =>{
+        axios 
+        // .get('https://ktc-ph-api.herokuapp.com/?format=json')
+        .get(maploc)
+        .then(res =>{
+            setresponse(res.data)
+        })
+        .catch(err =>{
+        });
+    },[]);
+    return <>
+        {response}
+    </>
+};
 
 
