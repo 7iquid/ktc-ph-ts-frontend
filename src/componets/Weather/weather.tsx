@@ -7,8 +7,10 @@ import styles from "./weather.module.scss";
 import { Parent } from '../test/test_context';
 
 function Weather() {
+
+  // const [response, setResponse] = useState<any>(WeatherDataGet());
+  let response = WeatherDataGet();
   
-  let response= WeatherDataGet()
   let linker ='https:'+response?.current?.condition?.icon;
     return (
       <div   className={styles.style}  >
