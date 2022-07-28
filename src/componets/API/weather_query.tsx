@@ -24,12 +24,12 @@ export const defaultparam ={
 }
 
 function CheckLocation(){
-    const [locator, setlocator] = useState<[number,number]>([19.6,100.98]);
+    const [locator, setlocator] = useState<any>([19.6,100.98]);
     
     useEffect(() =>{
         navigator.geolocation.getCurrentPosition((position)=> {
         setlocator([position.coords.latitude,  position.coords.longitude])
-        console.log(3, 'CheckLocation', locator)
+        // console.log(3, 'CheckLocation', locator)
         });
     },locator);
     
@@ -38,8 +38,8 @@ function CheckLocation(){
 
 export function WeatherDataGet(){
     // console.log(2 , 'WeatherDataGet', params);
-    let data =DefaultWetherApi
-    const [response, setresponse] = useState<any>(DefaultWetherApi);
+    // let data =DefaultWetherApi
+    const [response, setresponse] = useState<any>();
     const [loading, setLoading] = useState(true)
     let [lat,lon]  =CheckLocation()
     let maploc:any =defaultparam.weather_url + defaultparam.api_key +lat +' '+lon+ '&aqi=no'
@@ -56,7 +56,7 @@ export function WeatherDataGet(){
             setLoading(false)
         });
     },[]);
-    return [loading,response]; 
+    return response; 
 }
 
 

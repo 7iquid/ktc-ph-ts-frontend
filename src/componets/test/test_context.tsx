@@ -30,7 +30,7 @@ export const Child=(props:any )=>{
 
 
 export const Child2:FC<{ children: ReactNode, data:any}>=({children, data})=>{
-	console.log(data)
+	// console.log(data)
 
 	return(
 		<div>
