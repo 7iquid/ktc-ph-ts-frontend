@@ -8,6 +8,7 @@ import { Parent } from '../test/test_context';
 
 function Weather() {
   let response = WeatherDataGet();
+  useEffect(()=>{},[response])
   let linker ='https:'+response?.current?.condition?.icon;
     return (
       <div   className={styles.style}  >
