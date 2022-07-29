@@ -1,7 +1,7 @@
 import React from 'react';
-import Weather, {Teshook} from './componets/Weather/weather';
 import {Helmet} from 'react-helmet';
 import styles from './App.module.scss';
+import Weather from './componets/Weather/weather';
 // import styles from "./Box.module.scss";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
         <style type="text/css">{styles.body}</style>   
       </Helmet>
       <Weather/>
-      <Teshook/>
+
     </div>
 )}
 

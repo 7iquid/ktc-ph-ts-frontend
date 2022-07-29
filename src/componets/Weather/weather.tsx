@@ -3,7 +3,6 @@ import Box from "./Box/Box";
 import Grid from "./Grid/Grid";
 import GridRuler from "./GridRuler/GridRuler";
 import  {WeatherDataGet, defaultparam, DefaultWetherApi} from '../API/weather_query';
-import Row from '../request/test';
 import styles from "./weather.module.scss";
 
 
