@@ -14,7 +14,6 @@ interface paramsko  {
     json_path?:string ,
     lat?: number ,
     lon?: number ,
-    
 }
 
 export const defaultparam ={
@@ -23,40 +22,37 @@ export const defaultparam ={
     json_path :   '/current.json',
 }
 
-function CheckLocation(){
-    const [locator, setlocator] = useState<any>([19.6,100.98]);
-    
+export function CheckLocation(){
+    // const [locator, setlocator] = useState<any>([19.6,100.98]);
+    const [locator, setlocator] = useState<any>()
+    let maploc:any =''
     useEffect(() =>{
         navigator.geolocation.getCurrentPosition((position)=> {
-        setlocator([position.coords.latitude,  position.coords.longitude])
+        maploc =defaultparam.weather_url + defaultparam.api_key +position.coords.latitude +' '+position.coords.longitude+ '&aqi=no'
+        setlocator(maploc)
         // console.log(3, 'CheckLocation', locator)
         });
-    },locator);
-    
+    },[maploc]);
     return locator
 }
 
 export function WeatherDataGet(){
-    // console.log(2 , 'WeatherDataGet', params);
-    // let data =DefaultWetherApi
-    const [response, setresponse] = useState<any>();
-    const [loading, setLoading] = useState(true)
-    let [lat,lon]  =CheckLocation()
-    let maploc:any =defaultparam.weather_url + defaultparam.api_key +lat +' '+lon+ '&aqi=no'
-    // console.log(maploc)
-    useEffect(() =>{
-        axios 
-        // .get('https://ktc-ph-api.herokuapp.com/?format=json')
-        .get(maploc)
-        .then(res =>{
-            setLoading(false)
-            setresponse(res.data)
+    const [response, setresponse] = useState<any>()
+    let url =  CheckLocation()
+    async function testt(){
+        await fetch(url)
+        .then((res)=>res.json())
+        .then(data=> {
+            setresponse(data)
         })
-        .catch(err =>{
-            setLoading(false)
-        });
-    },[]);
-    return response; 
+        .catch((err)=> {            
+        }) 
+    }
+    useEffect(()=>{
+        testt();
+    },[url])
+    return response
+    
 }
 
 
