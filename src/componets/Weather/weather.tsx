@@ -24,6 +24,8 @@ function Weather() {
           <div>
             <img src={linker}></img>
           </div>  
+       
+
           </Grid>
        </Box>
 
@@ -36,10 +38,8 @@ function Weather() {
                 <li> Wind Direction : {response?.current?.wind_dir}</li>
                 <li> Humidity : {response?.current?.humidity}</li>
                 <li> Address : asdw</li>
-                
               </ul>
             </Box>
-         
         </Box>
 
       </div>
