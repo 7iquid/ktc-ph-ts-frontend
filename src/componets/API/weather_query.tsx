@@ -18,7 +18,7 @@ interface paramsko  {
 
 export const defaultparam ={
     api_key :    '8daf2b94b0ef4115bde152002222506&q=',
-    weather_url : 'https://api.weatherapi.com/v1/current.json?key=',
+    weather_url : 'http://api.weatherapi.com/v1/current.json?key=',
     json_path :   '/current.json',
 }
 
