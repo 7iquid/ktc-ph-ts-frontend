@@ -4,11 +4,15 @@ import React from 'react';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 import { createRoot } from 'react-dom/client';
-
+import { BrowserRouter } from "react-router-dom";
 
 const portalDiv = document.getElementById('root')!;
 const root = createRoot(portalDiv); // createRoot(container!) if you use TypeScript
-root.render(<App/>);
+root.render(
+	<BrowserRouter>
+		<App/>
+	</BrowserRouter>
+	);
 
 
 // ReactDOM.render(

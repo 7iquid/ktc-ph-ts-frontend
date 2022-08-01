@@ -13,20 +13,14 @@
 // justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly
 
 .NavBar{
-	// text-align: right;
 	justify-content: flex-end;
 	display: flex;
 	flex-wrap: nowrap;
-	// @include layout_designer;
 	background-color: transparent;
-
 	font-family: const.$default-font; 
-	// justify-content: flex-end;
-	// flex-wrap: wrap;
-	// align-items: 3rem;
 }
 
-.NavBar>button{
+.NavBar2{
 	// text-align: right;
 	// justify-content: flex-end;
 	// display: flex;
