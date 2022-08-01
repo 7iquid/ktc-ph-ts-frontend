@@ -1,10 +1,7 @@
 import React,{useState,useEffect} from 'react';
-import Box from "./Box/Box";
-import Grid from "./Grid/Grid";
-import GridRuler from "./GridRuler/GridRuler";
-import  {WeatherDataGet, defaultparam, DefaultWetherApi,CheckLocation} from '../API/weather_query';
+import  {WeatherDataGet} from '../API/weather_query';
 import styles from "./weather.module.scss";
-import { Parent } from '../test/test_context';
+
 
 function Weather() {
   let response = WeatherDataGet();
@@ -12,35 +9,24 @@ function Weather() {
   let linker ='https:'+response?.current?.condition?.icon;
     return (
       <div   className={styles.style}  >
-        <Box >
-          <Grid justifyContent='space-between'       
-                container
-                spacing="sm"
-                alignItems="center"
-                sm={4} >
-          <div>
-            {response?.location.region}
-          </div>
+        <div >
           <div>
             <img src={linker}></img>
           </div>  
-       
-
-          </Grid>
-       </Box>
-
-        <Box >
-         <h2 >Welcome to my Weather</h2>
-            <Box >
+          <div >
+            {response?.location.region}
+          </div>
+        </div>
+        <div >
               <ul>
                 <li> Condition : {response?.current.condition.text}</li>
                 <li> Wind  : {response?.current?.wind_kph}</li>
                 <li> Wind Direction : {response?.current?.wind_dir}</li>
                 <li> Humidity : {response?.current?.humidity}</li>
-                <li> Address : asdw</li>
+                <li> TempC : {response?.current.feelslike_c}</li>
+                <li> Date/Time : {response?.location.localtime}</li>
               </ul>
-            </Box>
-        </Box>
+        </div>
 
       </div>
     )

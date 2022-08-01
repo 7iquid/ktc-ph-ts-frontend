@@ -11,6 +11,10 @@ $box-padding : 16px;
 $box-radius : 4px;
 $box-margin-top-bottom: 5px;
 
+//font
+$default-font : Arial, sans-serif;
+
+
 @mixin layout_designer{
 	border-color: black;
 	border: 0.03rem solid;

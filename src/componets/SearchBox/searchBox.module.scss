@@ -14,18 +14,13 @@
 	background: url('search-icon.svg');
 	border-color: transparent;
 	background-color: #FF6347;
-	width: 2.8rem;
-	height: 2.8rem;	
+	width: 3.5rem;
+	height: 3.5rem;
+	&:hover{
+		cursor: pointer;
+		background-color: orange;
+	}	
 }
-.SearchButton>button:hover{
-	cursor: pointer;
-	background: url('search-icon.svg');
-	border-color: transparent;
-	background-color: orange;
-	width: 2.8rem;
-	height: 2.8rem;	
-}
-
 
 .Input{
 	// padding: const.$box-padding;

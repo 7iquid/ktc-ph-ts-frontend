@@ -7,6 +7,7 @@
 .Seperator{
 	display: flex;
 	justify-content: space-between;
+	font-family: const.$default-font;
 }
 
 // justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly
@@ -19,6 +20,7 @@
 	// @include layout_designer;
 	background-color: transparent;
 
+	font-family: const.$default-font; 
 	// justify-content: flex-end;
 	// flex-wrap: wrap;
 	// align-items: 3rem;
@@ -35,7 +37,7 @@
 	padding-right: 1rem;
 	background-color: transparent;
 	border-color: transparent;
-	font-family:  monospace;
+	font-family: const.$default-font; 
 	// justify-content: flex-end;
 	// flex-wrap: wrap;
 	// align-items: 3rem;

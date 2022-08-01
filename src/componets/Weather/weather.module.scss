@@ -10,14 +10,18 @@ $weather-page-width-size: 50%;
 
 
 .style {
-
+      display: flex;
       margin: $weather-page-center; 
-      margin-top: $weather-page-top-space;
+      margin-bottom: 1rem;
       position: $weather-page-new-plain;
-      height: $weather-page-component-size;
-      width: $weather-page-width-size;
+      height: 10%;
+      width: 18rem;
 };
 
+.titleWeather{
+      display: flex;
+      width: 4rem;
+}
 .weatherBox{
       // @include layout_designer;
       display: flex;

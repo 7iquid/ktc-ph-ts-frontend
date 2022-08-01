@@ -8,11 +8,17 @@ how to query using function
 ```javascript
 import WeatherDataGet from './API/weather_query' 
 // 
-function Sample_get(){
-	let [status,response] = WeatherDataGet();
-	console.log(data);
-	if(status){return(<></>)}else{return(<>{response.location.name}</>)};
-    }
+export function SingleWeather(){
+  let response = WeatherDataGet();
+  useEffect(()=>{},[response])
+  let linker ='https:'+response?.current?.condition?.icon;
+  return(
+    <div className={styles.weatherBox}>
+      <div> <img className={styles.weathericon} src={linker}></img></div>
+      <div className={styles.weathertext} > {response?.location.country}</div>
+  </div>
+  )
+}}
 
 
 ```

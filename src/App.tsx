@@ -14,7 +14,7 @@ function App() {
       </Helmet>
        <NavBar/>
        <SearchBox/>
-      <Weather/>
+      
 
     </div>
 )}
