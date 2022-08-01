@@ -1,0 +1,54 @@
+@use '../../constants' as const;
+@mixin layout_designer{
+	border-color: black;
+	border: 0.03rem solid;
+}
+
+.Seperator{
+	display: flex;
+	justify-content: space-between;
+}
+
+// justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly
+
+.NavBar{
+	// text-align: right;
+	justify-content: flex-end;
+	display: flex;
+	flex-wrap: nowrap;
+	// @include layout_designer;
+	background-color: transparent;
+
+	// justify-content: flex-end;
+	// flex-wrap: wrap;
+	// align-items: 3rem;
+}
+
+.NavBar>button{
+	// text-align: right;
+	// justify-content: flex-end;
+	// display: flex;
+	// flex-wrap: nowrap;
+	// @include layout_designer;
+	color: gray;
+	word-spacing: initial;
+	padding-right: 1rem;
+	background-color: transparent;
+	border-color: transparent;
+	font-family:  monospace;
+	// justify-content: flex-end;
+	// flex-wrap: wrap;
+	// align-items: 3rem;
+}
+.NavBar>button:hover{
+	color: blue;
+}
+// .NavBar>div{
+// 	background-color: #f1f1f1;
+//   	width: 100px;
+//   	margin: 10px;
+//   	text-align: center;
+//   	line-height: 75px;
+//   	font-size: 30px;
+
+// }

@@ -1,0 +1,41 @@
+@use '../../constants' as const;
+@import  '../../constants.scss';
+// @import '../../image/searchIcon.svg';
+
+.SearchButton{
+	white-space: 1rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	// @include layout_designer;
+	justify-content: center;
+	display: flex;
+}
+.SearchButton>button{
+	background: url('search-icon.svg');
+	border-color: transparent;
+	background-color: #FF6347;
+	width: 2.8rem;
+	height: 2.8rem;	
+}
+.SearchButton>button:hover{
+	cursor: pointer;
+	background: url('search-icon.svg');
+	border-color: transparent;
+	background-color: orange;
+	width: 2.8rem;
+	height: 2.8rem;	
+}
+
+
+.Input{
+	// padding: const.$box-padding;
+	width: 60%;
+	height: 2.4rem;
+  	border-radius: 0.1rem;
+  	border-color: transparent;
+  	// box-shadow: const.$default-shadow;
+  	padding-left: const.$box-padding;
+  	background-color: #E0E0E0;
+  	// margin-top: const.$box-margin-top-bottom;
+  	// margin-bottom: const.$box-margin-top-bottom;
+}

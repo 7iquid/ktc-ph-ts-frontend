@@ -1,5 +1,5 @@
 @use '../../constants' as const;
-
+@import  '../../constants.scss';
 
 // size
 $weather-page-center: auto;
@@ -17,3 +17,15 @@ $weather-page-width-size: 50%;
       height: $weather-page-component-size;
       width: $weather-page-width-size;
 };
+
+.weatherBox{
+      // @include layout_designer;
+      display: flex;
+   
+}
+.weathericon{
+      height: 2rem;
+}
+.weathertext{
+      padding-top: 0.5rem;
+}
