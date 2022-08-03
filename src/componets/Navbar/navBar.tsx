@@ -25,8 +25,8 @@ export function NavBarUrl(){
 
 export function RoutingViews() {
   return (
-    <div >
-    	<Routes>
+    <div className={style.RoutePage}>
+    	<Routes >
         	<Route path="/" element={<Home />} />
         	<Route path="/about" element={<About />} />
     	</Routes>

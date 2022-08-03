@@ -1,8 +1,9 @@
 @use '../../constants' as const;
-@mixin layout_designer{
-	border-color: black;
-	border: 0.03rem solid;
-}
+@import  '../../constants.scss';
+// @mixin layout_designer{
+// 	border-color: black;
+// 	border: 0.03rem solid;
+// }
 
 .Seperator{
 	display: flex;
@@ -48,3 +49,10 @@
 //   	font-size: 30px;
 
 // }
+
+// route page area
+
+.RoutePage{
+	// @include layout_designer;
+	margin: auto;
+}
