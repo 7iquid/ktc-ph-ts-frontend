@@ -24,7 +24,7 @@ const defaultparam ={
     weather_url : 'https://api.weatherapi.com/v1/current.json?key=',
     json_path :   '/current.json',
 }
-function DeviceLocation() {
+export const DeviceLocation:FC<{children:ReactNode;}> = ({children}) => {
     const { coords, isGeolocationAvailable, isGeolocationEnabled } =
         useGeolocated({
             positionOptions: {
@@ -33,28 +33,39 @@ function DeviceLocation() {
             userDecisionTimeout: 5000,
     });
     localStorage.setItem('devicelocation', JSON.stringify([coords, isGeolocationAvailable, isGeolocationEnabled]));  
-   return <LocationContext.Provider value={[131,23213]} >{}  </LocationContext.Provider>;
+    const data = [coords ]   
+   return( <>
+    <LocationContext.Provider value={data} >
+     
+        {children} 
+         
+    </LocationContext.Provider>
+   </>
+   )
  }
 
-function GetAxios(){
-    const [auth, handleAuth, c] = useApi(useApi);
-    let a:any
-    console.log(localStorage.getItem('devicelocation'))
+// function GetAxios(){
+//     const [auth, handleAuth, c] = useApi(useApi);
+//     let a:any
+//     console.log(localStorage.getItem('devicelocation'))
     
-}
+// }
 
 export const ApiProvider:FC<{children:ReactNode;}> = ({children}) => {
-  let a: boolean = false
-  const [auth, setAuth] = useState(false);
-  console.log('AuthProvider =========1', auth, a)
-  
-  const handleAuth = () => {
-    setAuth(!auth);
-    a = !a
-    console.log('AuthProvider =========2' , auth, a)
-  };
-  const pogi = [auth, GetAxios, a];
-  return <ApiContext.Provider value={pogi} >{children}  </ApiContext.Provider>;
+    const [weatherdata, setweather] =  useLocation(useLocation);
+    const test=()=>{console.log(weatherdata.latitude);setweather(true)}
+    const data = [weatherdata,test];
+    console.log(weatherdata?.latitude)
+    return (<>
+            <ApiProvider >
+                <ApiContext.Provider value={data} >
+            
+                   {children}  
+               
+                </ApiContext.Provider>
+            </ApiProvider> 
+        </>
+    )
 };
 
 export const useApi = ({ children }:any) => {
@@ -64,6 +75,16 @@ export const useApi = ({ children }:any) => {
   }
   return context;
 };
+
+export const useLocation = ({ children }:any) => {
+  const context = useContext(LocationContext);
+  if (context === undefined) {
+    throw new Error("useLocation can only be used inside AuthProvider");
+  }
+  return context;
+};
+
+
 
 
 
