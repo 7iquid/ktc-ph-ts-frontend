@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
 export function SearchBox(){
-	console.log('SearchBox ========>',)
+	// console.log('SearchBox ========>',)
   	const [message, setMessage] = useState('');
   	const inputRef = useRef<any>(null);
     const inputEnter = useRef<any>(null);

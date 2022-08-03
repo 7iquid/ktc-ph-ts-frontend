@@ -1,7 +1,10 @@
-import React,{useState, useEffect, FC, ReactNode} from "react";
+import React,{useState, useEffect, FC, ReactNode , useContext, createContext} from "react";
 import axios from "axios";
+import { useGeolocated } from "react-geolocated";
 
-export const DefaultWetherApi= require('./defaultwheaterapi.json');
+const DefaultWetherApi= require('./defaultwheaterapi.json');
+const ApiContext = createContext<any>(undefined);
+const LocationContext = createContext<any>(undefined);
 
 interface resp{
     location:string,
@@ -16,11 +19,53 @@ interface paramsko  {
     lon?: number ,
 }
 
-export const defaultparam ={
+const defaultparam ={
     api_key :    '8daf2b94b0ef4115bde152002222506&q=',
     weather_url : 'https://api.weatherapi.com/v1/current.json?key=',
     json_path :   '/current.json',
 }
+function DeviceLocation() {
+    const { coords, isGeolocationAvailable, isGeolocationEnabled } =
+        useGeolocated({
+            positionOptions: {
+                enableHighAccuracy: true,
+            },
+            userDecisionTimeout: 5000,
+    });
+    localStorage.setItem('devicelocation', JSON.stringify([coords, isGeolocationAvailable, isGeolocationEnabled]));  
+   return <LocationContext.Provider value={[131,23213]} >{}  </LocationContext.Provider>;
+ }
+
+function GetAxios(){
+    const [auth, handleAuth, c] = useApi(useApi);
+    let a:any
+    console.log(localStorage.getItem('devicelocation'))
+    
+}
+
+export const ApiProvider:FC<{children:ReactNode;}> = ({children}) => {
+  let a: boolean = false
+  const [auth, setAuth] = useState(false);
+  console.log('AuthProvider =========1', auth, a)
+  
+  const handleAuth = () => {
+    setAuth(!auth);
+    a = !a
+    console.log('AuthProvider =========2' , auth, a)
+  };
+  const pogi = [auth, GetAxios, a];
+  return <ApiContext.Provider value={pogi} >{children}  </ApiContext.Provider>;
+};
+
+export const useApi = ({ children }:any) => {
+  const context = useContext(ApiContext);
+  if (context === undefined) {
+    throw new Error("useAuth can only be used inside AuthProvider");
+  }
+  return context;
+};
+
+
 
 export function CheckLocation(){
     // const [locator, setlocator] = useState<any>([19.6,100.98]);

@@ -4,7 +4,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { Routes, Route, Link} from "react-router-dom";
 import { Home } from '../../Template/Home/Home';
 import { About } from '../../Template/About/About';
-
+import { DevMod } from '../../Template/_DevMode/devmod';
 
 
 export function NavBarUrl(){
@@ -29,6 +29,7 @@ export function RoutingViews() {
     	<Routes >
         	<Route path="/" element={<Home />} />
         	<Route path="/about" element={<About />} />
+        	<Route path="/devmod" element={<DevMod />} />
     	</Routes>
     </div>
   );
