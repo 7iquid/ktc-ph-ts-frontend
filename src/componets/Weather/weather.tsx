@@ -1,11 +1,12 @@
 import React,{useState,useEffect} from 'react';
-import  {WeatherDataGet} from '../API/weather_query';
+// import  {WeatherDataGet} from '../API/weather_query';
 import styles from "./weather.module.scss";
 
 import CircularProgress from '@mui/material/CircularProgress';
 
 function Weather() {
-  let response = WeatherDataGet();
+  // let response = WeatherDataGet();
+  let response:any
   useEffect(()=>{},[response])
   let linker ='https:'+response?.current?.condition?.icon;
     return (
@@ -46,7 +47,8 @@ export const Teshook =(props:any)=>{
 }
 
 export function SingleWeather(){
-  let response = WeatherDataGet();
+  // let response = WeatherDataGet();
+  let response:any
   // let response:any
   let data = <></>
   useEffect(()=>{},[response])

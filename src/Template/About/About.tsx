@@ -1,14 +1,7 @@
-import { useGeolocated } from "react-geolocated";
-
+import { useContext } from "react";
+import { LocationContext } from "../../componets/API/GeoLoc";
 export function About() {
-      const { coords, isGeolocationAvailable, isGeolocationEnabled } =
-        useGeolocated({
-            positionOptions: {
-                enableHighAccuracy: false,
-            },
-            userDecisionTimeout: 5000,
-        });
-        // console.log('About =========1')
+      const [ coords, isGeolocationAvailable, isGeolocationEnabled ] = useContext<any>(LocationContext)
   return(
     !isGeolocationAvailable ?( 
       <div>Your browser does not support Geolocation</div>

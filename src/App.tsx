@@ -3,7 +3,8 @@ import {Helmet} from 'react-helmet';
 import styles from './App.module.scss';
 import { NavBarUrl, RoutingViews} from './componets/Navbar/navBar';
 import { SearchBox } from './componets/SearchBox/searchBox';
-import { ApiProvider,DeviceLocation } from './componets/API/weather_query';
+import { ApiProvider} from './componets/API/weather_query';
+import { DeviceLocation } from './componets/API/GeoLoc';
 
 function App() {
 
@@ -13,12 +14,12 @@ function App() {
         <style type="text/css">{styles.body}</style>   
       </Helmet>
       <DeviceLocation>
-        <ApiProvider>
+        <ApiProvider >
           <NavBarUrl/>
           <SearchBox/>
           <RoutingViews/>
-        </ApiProvider>
-        </DeviceLocation>
+        </ApiProvider> 
+      </DeviceLocation>
     </div>
 )}
 
