@@ -7,10 +7,10 @@ import { saveToLocal, getFromLocal, removeFromLocal } from "./LocalStorageApi";
 import { defaultparam } from "./GeoLoc";
 import CircularProgress from '@mui/material/CircularProgress';
 import { useGetAxiom } from "./AxiosCrud";
+
+
 const datajson = require('./defaultwheaterapi.json')
-const ApiContext = createContext<any>(undefined);
-
-
+export const ApiContext = createContext<any>(undefined);
 
 export const ApiProvider:FC<{children:ReactNode;}> = ({children}) => {
         const data:any = useGetAxiom('WeatherData')
