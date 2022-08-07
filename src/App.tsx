@@ -13,13 +13,13 @@ function App() {
       <Helmet>
         <style type="text/css">{styles.body}</style>   
       </Helmet>
-      <DeviceLocation>
+  
         <ApiProvider >
           <NavBarUrl/>
           <SearchBox/>
           <RoutingViews/>
         </ApiProvider> 
-      </DeviceLocation>
+
     </div>
 )}
 
