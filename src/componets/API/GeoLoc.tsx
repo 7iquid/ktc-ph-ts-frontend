@@ -1,6 +1,6 @@
 import { useGeolocated } from "react-geolocated";
 import React,{useState, useEffect, FC, ReactNode , useContext, createContext} from "react";
-
+import { saveToLocal, getFromLocal, removeFromLocal } from "./LocalStorageApi";
 
 export const LocationContext = createContext<any>(undefined);
 
@@ -14,19 +14,25 @@ export const defaultparam ={
 
 
 export const DeviceLocation:FC<{children:ReactNode;}> = ({children}) => {
-	const { coords, isGeolocationAvailable, isGeolocationEnabled }:any =
+	const [location, setLocation] = useState(getFromLocal('location'))
+    const { coords, isGeolocationAvailable, isGeolocationEnabled }:any =
         useGeolocated({
             positionOptions: {
                 enableHighAccuracy: false,
             },
             userDecisionTimeout: 5000,     
     });
-	const data ={
-	    url: 	defaultparam.weather_url + defaultparam.api_key +coords?.latitude +' '+coords?.longitude+ '&aqi=no',
-	    LoadStatus	: true,
-	}
+	// const data ={
+	//     url: 	defaultparam.weather_url + defaultparam.api_key +coords?.latitude +' '+coords?.longitude+ '&aqi=no',
+	//     isGeolocationAvailable,
+ //        isGeolocationEnabled
+	// }
+    useEffect(()=>{ 
+        if(!getFromLocal('location')){saveToLocal('location',coords);setLocation(coords)}
+    },[coords])
+    console.log('DeviceLocation ===' , location)
    	return( <>
-    	<LocationContext.Provider value={data} >  
+    	<LocationContext.Provider value={location} >  
             {children} 
     	</LocationContext.Provider>
    </>
