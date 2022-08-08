@@ -1,7 +1,7 @@
 
 export const getFromLocal = (key:string) => {
     const data:any = localStorage.getItem(key);
-    if(data==undefined){return data}
+    if(data===undefined){return data}
     return JSON.parse(data);
 };
 
