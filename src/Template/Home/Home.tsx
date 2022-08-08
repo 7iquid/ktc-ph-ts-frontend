@@ -67,7 +67,7 @@ export function Home() {
 
   return (
     <div className={styles.main}>
-      <h1>SlideShow</h1>
+      <h1>SLIDES SHOW</h1>
       <Slideshow
         imgs={[
           'https://images.unsplash.com/photo-1585255318859-f5c15f4cffe9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&ixlib=rb-1.2.1&q=80&w=500',
