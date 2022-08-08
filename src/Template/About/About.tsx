@@ -1,43 +1,13 @@
 import { useContext } from "react";
+import styles from './About.module.scss'
 import { LocationContext } from "../../componets/API/GeoLoc";
+
 export function About() {
-      const [ coords, isGeolocationAvailable, isGeolocationEnabled ] = useContext<any>(LocationContext)
-  return(
-    !isGeolocationAvailable ?( 
-      <div>Your browser does not support Geolocation</div>
-    ):!isGeolocationEnabled ? (
-      <div>Geolocation is not enabled</div>
-    ): coords ? (
-              <table>
-            <tbody>
-                <tr>
-                    <td>latitude</td>
-                    <td>{coords.latitude}</td>
-                </tr>
-                <tr>
-                    <td>longitude</td>
-                    <td>{coords.longitude}</td>
-                </tr>
-                <tr>
-                    <td>altitude</td>
-                    <td>{coords.altitude}</td>
-                </tr>
-                <tr>
-                    <td>heading</td>
-                    <td>{coords.heading}</td>
-                </tr>
-                <tr>
-                    <td>speed</td>
-                    <td>{coords.speed}</td>
-                </tr>
-            </tbody>
-        </table>
-    ) : (
-      <div>
-      Getting the location data&hellip;  
+    return<div className={styles.main}> 
 
-      </div>
-
-    )
-  )
+    <h1>AKNOWLEDMENT</h1>
+    <p>
+        Thanks to sir Darel for the traiting and support
+    </p>
+    </div>
 }
