@@ -24,7 +24,8 @@ function useLoc(){
             // 
             if(loc){
                 saveToLocal('location',loc)
-                console.log(loc ,11231231232)}
+                // console.log(loc ,11231231232)
+            }
             console.log('navigator 222 ====' ,loc)
             setLoc(loc)
 
@@ -35,38 +36,25 @@ function useLoc(){
     return loc2
 }
 
-async function useAxiomKo(url:string){
+function useAxiomKo(url:string){
     const [loc2, setLoc]:any = useState(getFromLocal('response'))   
 
     if (!getFromLocal('response')){
 
-      try {
-        // 👇️ const data: GetUsersResponse
-        const { data, status } = await axios.get(
-          url,
-          {
-            headers: {
-              Accept: 'application/json',
-            },
-          },
-        );
-
-        // console.log(JSON.stringify(data, null, 4));
-        
-        // 👇️ "response status is: 200"
-        // console.log('response status is: ', status);
-        // console.log('useGetAxiom ====' ,123812093801 )
-        saveToLocal('response',data)
-        return data;
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          // console.log('error message: ', error.message);
-          return error.message;
-        } else {
-          // console.log('unexpected error: ', error);
-          return 'An unexpected error occurred';
-        }
-      }
+        axios.get(url)
+            .then(function (response) {
+            // handle success
+            setLoc(response.data)
+            saveToLocal('response', response.data)
+            // console.log(response.data);
+            })
+            .catch(function (error) {
+            // handle error
+            console.log(error);
+            })
+            .then(function () {
+            // always executed
+            });
 
     }
 
@@ -80,10 +68,17 @@ const locationloc = useLoc()
 const response:any = useAxiomKo(locationloc)
 const [response2, setResponse] = useState(getFromLocal('response'))  
 
+
 useEffect(()=>{
     setLoc(locationloc)
-    
-},[locationloc])
-console.log('useGetAxiom ====' ,response2 )
+    setResponse(response)
+},[locationloc, response])
+
+// useEffect(()=>{
+//     // setLoc(locationloc)
+//     setResponse(getFromLocal('response'))
+// },[response])
+
+// console.log('useGetAxiom ====' ,response )
 return response2
 }
