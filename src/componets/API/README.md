@@ -18,7 +18,7 @@ export function SingleWeather(){
       <div className={styles.weathertext} > {response?.location.country}</div>
   </div>
   )
-}}
+}
 
 
 ```

@@ -1,6 +1,6 @@
 import { useGeolocated } from "react-geolocated";
-import React,{useState, useEffect, FC, ReactNode , useContext, createContext} from "react";
-import { saveToLocal, getFromLocal, removeFromLocal } from "./LocalStorageApi";
+import React,{useState, useEffect, FC, ReactNode ,  createContext} from "react";
+import { saveToLocal, getFromLocal,  } from "./LocalStorageApi";
 
 export const LocationContext = createContext<any>(undefined);
 
@@ -15,7 +15,7 @@ export const defaultparam ={
 
 export const DeviceLocation:FC<{children:ReactNode;}> = ({children}) => {
 	const [location, setLocation] = useState(getFromLocal('location'))
-    const { coords, isGeolocationAvailable, isGeolocationEnabled }:any =
+    const { coords, }:any =
         useGeolocated({
             positionOptions: {
                 enableHighAccuracy: false,

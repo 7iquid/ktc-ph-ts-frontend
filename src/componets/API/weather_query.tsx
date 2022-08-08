@@ -1,21 +1,15 @@
-import React,{useState, useEffect, useRef, FC, ReactNode , useContext, createContext} from "react";
-import axios from "axios";
-import { useGeolocated } from "react-geolocated";
-import { LocationContext,DeviceLocation } from "./GeoLoc";
-import useAxios from "axios-hooks";
-import { saveToLocal, getFromLocal, removeFromLocal } from "./LocalStorageApi";
-import { defaultparam } from "./GeoLoc";
-import CircularProgress from '@mui/material/CircularProgress';
+import React,{useState, useEffect, FC, ReactNode ,  createContext} from "react";
 import { useGetAxiom } from "./AxiosCrud";
+// import { memoryUsage } from 'node:process';
 
-
-const datajson = require('./defaultwheaterapi.json')
 export const ApiContext = createContext<any>(undefined);
 
 export const ApiProvider:FC<{children:ReactNode;}> = ({children}) => {
         const data:any = useGetAxiom('WeatherData')
         const [response, setResponse]= useState()
+        // console.log(memoryUsage());
 
+        
     useEffect(()=>{
       setResponse(data)
     },[data])
