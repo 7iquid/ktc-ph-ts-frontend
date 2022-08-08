@@ -1,31 +1,75 @@
 import axios from 'axios'
-import { useGeolocated } from "react-geolocated";
-
-import useAxios from "axios-hooks";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { saveToLocal,getFromLocal } from './LocalStorageApi';
 
 
 
-export function useGetAxiom(key:string){
-    
 const defaultparam ={
     api_key :    '9f5846a3a7984c789b0105235220508&q=',
     weather_url : 'https://api.weatherapi.com/v1/current.json?key=',
     json_path :   '/current.json',
 }
 
-const { coords, isGeolocationAvailable, isGeolocationEnabled }:any =
-        useGeolocated({
-            positionOptions: {
-                enableHighAccuracy: false,
-            },
-            userDecisionTimeout: 5000,     
-    });
+function useLoc(){
+    const [loc2, setLoc]:any = useState(getFromLocal('location'))   
+    let loc
+    let pos
+    if (!getFromLocal('location')){
+        navigator.geolocation.getCurrentPosition(function(position) {
+            pos = position
+            loc =  defaultparam.weather_url + defaultparam.api_key +pos?.coords.latitude +' '+pos?.coords.longitude+ '&aqi=no'
+             
+            // 
+            if(loc){
+                saveToLocal('location',loc)
+                // console.log(loc ,11231231232)
+            }
+            // console.log('navigator 222 ====' ,loc)
+            setLoc(loc)
 
-const url =  defaultparam.weather_url + defaultparam.api_key +coords?.latitude +' '+coords?.longitude+ '&aqi=no'
-const  [data, setData] = useAxios(url)   
+        });
+    }
 
-console.log('useGetAxiom ====')
-return[data , setData]        
+    // useEffect(()=>{saveToLocal('location',loc2)},[loc2])
+    return loc2
+}
 
+function useAxiomKo(url:string){
+    const [loc2, setLoc]:any = useState(getFromLocal('response'))   
+
+    if (!getFromLocal('response') && getFromLocal('location')){
+
+        axios.get(url)
+            .then(function (response) {
+            // handle success
+            setLoc(response.data)
+            saveToLocal('response', response.data)
+            // console.log(response.data);
+            })
+            .catch(function (error) {
+            // handle error
+            console.log(error);
+            })
+            .then(function () {
+            // always executed
+            });
+
+    }
+
+   return loc2
+}
+
+
+export function useGetAxiom(key:string){
+    // const [loc, setLoc]:any = useState()    
+    const locationloc = useLoc()
+    const response:any = useAxiomKo(locationloc)
+    const [response2, setResponse] = useState(getFromLocal('response'))  
+
+
+    useEffect(()=>{
+        // setLoc(locationloc)
+        setResponse(response)
+    },[locationloc, response])
+return response2
 }
