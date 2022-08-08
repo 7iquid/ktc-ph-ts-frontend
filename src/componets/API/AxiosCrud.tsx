@@ -26,7 +26,7 @@ function useLoc(){
                 saveToLocal('location',loc)
                 // console.log(loc ,11231231232)
             }
-            console.log('navigator 222 ====' ,loc)
+            // console.log('navigator 222 ====' ,loc)
             setLoc(loc)
 
         });
@@ -39,7 +39,7 @@ function useLoc(){
 function useAxiomKo(url:string){
     const [loc2, setLoc]:any = useState(getFromLocal('response'))   
 
-    if (!getFromLocal('response')){
+    if (!getFromLocal('response') && getFromLocal('location')){
 
         axios.get(url)
             .then(function (response) {
@@ -63,22 +63,15 @@ function useAxiomKo(url:string){
 
 
 export function useGetAxiom(key:string){
-const [loc, setLoc]:any = useState()    
-const locationloc = useLoc()
-const response:any = useAxiomKo(locationloc)
-const [response2, setResponse] = useState(getFromLocal('response'))  
+    const [loc, setLoc]:any = useState()    
+    const locationloc = useLoc()
+    const response:any = useAxiomKo(locationloc)
+    const [response2, setResponse] = useState(getFromLocal('response'))  
 
 
-useEffect(()=>{
-    setLoc(locationloc)
-    setResponse(response)
-},[locationloc, response])
-
-// useEffect(()=>{
-//     // setLoc(locationloc)
-//     setResponse(getFromLocal('response'))
-// },[response])
-
-// console.log('useGetAxiom ====' ,response )
+    useEffect(()=>{
+        setLoc(locationloc)
+        setResponse(response)
+    },[locationloc, response])
 return response2
 }

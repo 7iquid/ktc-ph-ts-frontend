@@ -6,7 +6,7 @@ export const getFromLocal = (key:string) => {
 };
 
 export const saveToLocal = (key:string, data:any) => {
-    console.log(data)
+    // console.log(data)
     if(data){
         localStorage.setItem(key, JSON.stringify(data));
     }else{return {error:'error'}}
