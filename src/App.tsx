@@ -1,10 +1,9 @@
-import React, {useState, createContext, useContext } from 'react';
 import {Helmet} from 'react-helmet';
 import styles from './App.module.scss';
 import { NavBarUrl, RoutingViews} from './componets/Navbar/navBar';
 import { SearchBox } from './componets/SearchBox/searchBox';
 import { ApiProvider} from './componets/API/weather_query';
-import { DeviceLocation } from './componets/API/GeoLoc';
+
 
 function App() {
 

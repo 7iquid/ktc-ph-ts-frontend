@@ -1,4 +1,4 @@
-import React,{useState,useEffect, useContext} from 'react';
+import React,{useEffect, useContext} from 'react';
 // import  {WeatherDataGet} from '../API/weather_query';
 import styles from "./weather.module.scss";
 
@@ -35,17 +35,6 @@ function Weather() {
     )
 }
 export default Weather;
-
-export const Teshook =(props:any)=>{
-  const [response, setresponse] = useState<any>(); 
-  return(
-    <>
-       <div   className={styles.style}  >
-       awdcawrawrf {props.data}
-       </div>
-    </>
-    )
-}
 
 export function SingleWeather(){
   // let response = WeatherDataGet();

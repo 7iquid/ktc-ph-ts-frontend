@@ -1,6 +1,4 @@
 import axios from 'axios'
-import { useGeolocated } from "react-geolocated";
-import useAxios from "axios-hooks";
 import { useEffect, useState } from 'react';
 import { saveToLocal,getFromLocal } from './LocalStorageApi';
 
@@ -63,14 +61,14 @@ function useAxiomKo(url:string){
 
 
 export function useGetAxiom(key:string){
-    const [loc, setLoc]:any = useState()    
+    // const [loc, setLoc]:any = useState()    
     const locationloc = useLoc()
     const response:any = useAxiomKo(locationloc)
     const [response2, setResponse] = useState(getFromLocal('response'))  
 
 
     useEffect(()=>{
-        setLoc(locationloc)
+        // setLoc(locationloc)
         setResponse(response)
     },[locationloc, response])
 return response2
