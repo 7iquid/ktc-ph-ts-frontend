@@ -6,9 +6,14 @@
 // }
 
 .Seperator{
+	@include layout_designer;
+	position: -webkit-sticky; /* Safari */
+	position: sticky;
+	top: 0;
 	display: flex;
 	justify-content: space-between;
 	font-family: const.$default-font;
+	width: 100%;
 }
 
 // justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly

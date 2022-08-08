@@ -6,7 +6,7 @@ import { Routes, Route, Link} from "react-router-dom";
 import { Home } from '../../Template/Home/Home';
 import { About } from '../../Template/About/About';
 import { DevMod } from '../../Template/_DevMode/devmod';
-import { useLocation } from 'react-router-dom';
+import { AddItem } from '../../Template/Additems/Add/add';
 
 export function NavBarUrl(){
 	// const [weatherdata, setweather] =  useState(useLocation);
@@ -20,6 +20,7 @@ export function NavBarUrl(){
 			<div className={style.NavBar}>
 					 	<Link className={style.NavBar2} to="/">Home</Link>
 					 	<Link className={style.NavBar2} to="/about">About</Link>
+					 	<Link className={style.NavBar2} to="/additems/add">Add Items</Link>
 			</div>
 		</div> 
 		)
@@ -33,6 +34,7 @@ export function RoutingViews() {
         	<Route path="/" element={<Home />} />
         	<Route path="/about" element={<About />} />
         	<Route path="/devmod" element={<DevMod />} />
+        	<Route path="/additems/add" element={<AddItem />} />
     	</Routes>
     </div>
   );

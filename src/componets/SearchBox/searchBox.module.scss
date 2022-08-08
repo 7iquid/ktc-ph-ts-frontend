@@ -3,6 +3,7 @@
 // @import '../../image/searchIcon.svg';
 
 .SearchButton{
+	@include layout_designer;
 	white-space: 1rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
