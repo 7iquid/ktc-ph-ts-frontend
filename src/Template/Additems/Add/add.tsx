@@ -1,24 +1,32 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import styles from './add.module.scss';
 import { useDropboxChooser } from 'use-dropbox-chooser'
 import { useState } from "react";
+import axios from 'axios'
 
 
 export function AddItem() {
-  const { open, isOpen } = useDropboxChooser({
-    appKey: 'w5lbt5pc42jrm20',
-    // chooserOptions: { multiple: true, linkType: 'direct' },
-    onSelected: files => {
-      console.log(files)
-    },
-  })
+  const [forms, setForms] = useState<any>()
 
-  return (<>
-    {/*<img src='' />*/}
+   useEffect(()=>{
+          axios.get('http://127.0.0.1:8000/dtc/')
+          .then(function (response) {
+          // handle success
+          setForms(response)
 
-    <button onClick={open} disabled={isOpen}>
-      Choose from Dropbox
-    </button>
-    </>
-  )
+          // console.log(response.data);
+          })
+          .catch(function (error) {
+          // handle error
+          console.log(error);
+          })
+          .then(function () {
+          // always executed
+          });
+  console.log(forms)
+   },[])       
+  return <>{}</>
+
+
+  
 }
