@@ -73,3 +73,39 @@ export function useGetAxiom(key:string){
     },[locationloc, response])
 return response2
 }
+
+
+const ServerModStatus = (()=>{
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+    // dev code
+    return true
+    } else {
+    // production code
+    return false
+}
+})
+
+
+// export function DjangoRestApi() {
+//   const [forms, setForms] = useState<any>()
+//    useEffect(()=>{
+//           axios.get('http://127.0.0.1:8000/dtc/' )
+//           .then(function (response) {
+//           // handle success
+//           setForms(response.data)
+
+//           // console.log(response.data);
+//           })
+//           .catch(function (error) {
+//           // handle error
+//           console.log(error);
+//           })
+//           .then(function () {
+//           // always executed
+//           });
+  
+//    },[])    
+//    // console.log(<div>{'First · Second'}</div>)   
+//   return <div > {Parser(forms? forms : '<>loading</>')} </div>
+//   // return <h1> Hello pogi</h1>
+
