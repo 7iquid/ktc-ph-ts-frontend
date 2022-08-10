@@ -1,16 +1,24 @@
 import { useContext } from "react";
-import styles from './add.module.scss'
+import styles from './add.module.scss';
+import { useDropboxChooser } from 'use-dropbox-chooser'
+import { useState } from "react";
 
 
 export function AddItem() {
-    return<div className={styles.main}> 
+  const { open, isOpen } = useDropboxChooser({
+    appKey: 'w5lbt5pc42jrm20',
+    // chooserOptions: { multiple: true, linkType: 'direct' },
+    onSelected: files => {
+      console.log(files)
+    },
+  })
 
-    <h1></h1>
-    <form>
-      <label>Enter your name:  
-        <input type="text" />
-      </label>
-    </form>
+  return (<>
+    {/*<img src='' />*/}
 
-    </div>
+    <button onClick={open} disabled={isOpen}>
+      Choose from Dropbox
+    </button>
+    </>
+  )
 }
