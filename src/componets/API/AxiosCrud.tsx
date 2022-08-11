@@ -2,19 +2,51 @@ import axios from 'axios'
 import { useEffect, useState } from 'react';
 import { saveToLocal,getFromLocal } from './LocalStorageApi';
 
+export function useAxiosKo(url:string ,localstoragekey:string){
+    const [response, setResponse]:any = useState(getFromLocal(localstoragekey))   
 
+    if (!getFromLocal(localstoragekey) ){
 
-const defaultparam ={
-    api_key :    '9f5846a3a7984c789b0105235220508&q=',
-    weather_url : 'https://api.weatherapi.com/v1/current.json?key=',
-    json_path :   '/current.json',
+        axios.post(url,
+            {   
+                method: 'POST',
+                headers :{    
+                    'Content-Type': 'application/json'
+                },
+                body : JSON.stringify({'username': null, 'password': null}),
+            })
+            .then(function (response) {
+            // handle success
+            setResponse(response.data)
+            saveToLocal(localstoragekey, response.data)
+            // console.log(response.data);
+            })
+            .catch(function (error) {
+            // handle error
+            console.log(error);
+            })
+            .then(function () {
+            // always executed
+            });
+
+    }
+
+   return response
 }
 
-function useLoc(){
-    const [loc2, setLoc]:any = useState(getFromLocal('location'))   
+
+
+
+export function useGetWetherUrl(localStoragekeykey:string){
+    const defaultparam ={
+        api_key :    '9f5846a3a7984c789b0105235220508&q=',
+        weather_url : 'https://api.weatherapi.com/v1/current.json?key=',
+        json_path :   '/current.json',
+    }
+    const [loc2, setLoc]:any = useState(getFromLocal(localStoragekeykey))   
     let loc
     let pos
-    if (!getFromLocal('location')){
+    if (!getFromLocal(localStoragekeykey)){
         navigator.geolocation.getCurrentPosition(function(position) {
             pos = position
             loc =  defaultparam.weather_url + defaultparam.api_key +pos?.coords.latitude +' '+pos?.coords.longitude+ '&aqi=no'
@@ -34,56 +66,32 @@ function useLoc(){
     return loc2
 }
 
-function useAxiomKo(url:string){
-    const [loc2, setLoc]:any = useState(getFromLocal('response'))   
-
-    if (!getFromLocal('response') && getFromLocal('location')){
-
-        axios.get(url)
-            .then(function (response) {
-            // handle success
-            setLoc(response.data)
-            saveToLocal('response', response.data)
-            // console.log(response.data);
-            })
-            .catch(function (error) {
-            // handle error
-            console.log(error);
-            })
-            .then(function () {
-            // always executed
-            });
-
-    }
-
-   return loc2
-}
 
 
-export function useGetAxiom(key:string){
-    // const [loc, setLoc]:any = useState()    
-    const locationloc = useLoc()
-    const response:any = useAxiomKo(locationloc)
-    const [response2, setResponse] = useState(getFromLocal('response'))  
+// export function useGetAxiom(key:string){
+//     // const [loc, setLoc]:any = useState()    
+//     const locationloc = useLoc()
+//     const response:any = useAxiomKo(locationloc, 'response')
+//     const [response2, setResponse] = useState(getFromLocal('response'))  
 
 
-    useEffect(()=>{
-        // setLoc(locationloc)
-        setResponse(response)
-    },[locationloc, response])
-return response2
-}
+//     useEffect(()=>{
+//         // setLoc(locationloc)
+//         setResponse(response)
+//     },[locationloc, response])
+// return response2
+// }
 
 
-const ServerModStatus = (()=>{
-    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-    // dev code
-    return true
-    } else {
-    // production code
-    return false
-}
-})
+// const ServerModStatus = (()=>{
+//     if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+//     // dev code
+//     return true
+//     } else {
+//     // production code
+//     return false
+// }
+// })
 
 
 // export function DjangoRestApi() {

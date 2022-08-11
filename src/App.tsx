@@ -2,7 +2,7 @@ import {Helmet} from 'react-helmet';
 import styles from './App.module.scss';
 import { NavBarUrl, RoutingViews} from './componets/Navbar/navBar';
 import { SearchBox } from './componets/SearchBox/searchBox';
-import { ApiProvider} from './componets/API/weather_query';
+import { ApiProvider} from './componets/API/ApiProvider';
 
 
 function App() {
