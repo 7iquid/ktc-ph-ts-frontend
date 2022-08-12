@@ -28,8 +28,10 @@ $weather-page-width-size: 50%;
    
 }
 .weathericon{
+
       height: 2rem;
 }
 .weathertext{
+      @include font-small-default;
       padding-top: 0.5rem;
 }

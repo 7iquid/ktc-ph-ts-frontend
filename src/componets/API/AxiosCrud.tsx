@@ -2,7 +2,30 @@ import axios from 'axios'
 import { useEffect, useState } from 'react';
 import { saveToLocal,getFromLocal } from './LocalStorageApi';
 
+function useAxiomKo(url:string, localStorageName:string='test'){
+    const [response, setResponse]:any = useState(getFromLocal('response'))   
 
+    if (!getFromLocal('response') && getFromLocal('location')){
+
+        axios.get(url)
+            .then(function (response) {
+            // handle success
+            setResponse(response.data)
+            saveToLocal('response', response.data)
+            // console.log(response.data);
+            })
+            .catch(function (error) {
+            // handle error
+            console.log(error);
+            })
+            .then(function () {
+            // always executed
+            });
+
+    }
+
+   return response
+}
 
 const defaultparam ={
     api_key :    '9f5846a3a7984c789b0105235220508&q=',
@@ -34,30 +57,7 @@ function useLoc(){
     return loc2
 }
 
-function useAxiomKo(url:string){
-    const [loc2, setLoc]:any = useState(getFromLocal('response'))   
 
-    if (!getFromLocal('response') && getFromLocal('location')){
-
-        axios.get(url)
-            .then(function (response) {
-            // handle success
-            setLoc(response.data)
-            saveToLocal('response', response.data)
-            // console.log(response.data);
-            })
-            .catch(function (error) {
-            // handle error
-            console.log(error);
-            })
-            .then(function () {
-            // always executed
-            });
-
-    }
-
-   return loc2
-}
 
 
 export function useGetAxiom(key:string){

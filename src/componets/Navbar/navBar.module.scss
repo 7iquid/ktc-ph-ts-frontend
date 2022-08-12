@@ -23,16 +23,12 @@
 	display: flex;
 	flex-wrap: nowrap;
 	background-color: transparent;
-	font-family: const.$default-font; 
+	
 }
 
 .NavBar2{
-	// text-align: right;
-	// justify-content: flex-end;
-	// display: flex;
-	// flex-wrap: nowrap;
-	// @include layout_designer;
-	color: gray;
+	@include layout_designer;
+	@include font-small-default;
 	word-spacing: initial;
 	padding-right: 1rem;
 	background-color: transparent;
@@ -41,10 +37,20 @@
 	// justify-content: flex-end;
 	// flex-wrap: wrap;
 	// align-items: 3rem;
+	&:hover{
+		cursor: pointer;
+		color: lightblue;
+		// background-color: orange;
+	}
 }
-.NavBar>button:hover{
-	color: blue;
-}
+// .NavBar>link{
+
+// }
+
+
+// .NavBar>button:hover{
+// 	color: blue;
+// }
 // .NavBar>div{
 // 	background-color: #f1f1f1;
 //   	width: 100px;

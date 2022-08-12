@@ -7,20 +7,25 @@ import { Home } from '../../Template/Home/Home';
 import { About } from '../../Template/About/About';
 import { DevMod } from '../../Template/_DevMode/devmod';
 import { AddItem } from '../../Template/Additems/Add/add';
+import { LoginPage } from '../AccountView/CreateAccount';
 
 export function NavBarUrl(){
 	// const [weatherdata, setweather] =  useState(useLocation);
 	return(
 		<div className={style.Seperator}> 
-			<Tooltip title={<Weather/>} placement="right-start"> 
+			<Tooltip title={<Weather/>} placement="bottom-start"> 
 				<div><SingleWeather/></div>
 			</Tooltip>
 
 	
-			<div className={style.NavBar}>
+			<div >
 					 	<Link className={style.NavBar2} to="/">Home</Link>
-					 	<Link className={style.NavBar2} to="/about">About</Link>
 					 	<Link className={style.NavBar2} to="/additems/add">Add Items</Link>
+				<Tooltip title={<LoginPage/>} placement="bottom-start"> 
+					 	<button className={style.NavBar2} > Login</button>
+				</Tooltip>
+					 	<button className={style.NavBar2} > Sign-up</button>
+					 	<Link className={style.NavBar2} to="/about">About</Link>
 			</div>
 		</div> 
 		)
