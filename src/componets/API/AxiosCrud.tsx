@@ -75,6 +75,7 @@ export function useGetWetherUrl(localStoragekeykey:string){
 //     const [response2, setResponse] = useState(getFromLocal('response'))  
 
 
+
 //     useEffect(()=>{
 //         // setLoc(locationloc)
 //         setResponse(response)
@@ -116,4 +117,3 @@ export function useGetWetherUrl(localStoragekeykey:string){
 //    // console.log(<div>{'First · Second'}</div>)   
 //   return <div > {Parser(forms? forms : '<>loading</>')} </div>
 //   // return <h1> Hello pogi</h1>
-
