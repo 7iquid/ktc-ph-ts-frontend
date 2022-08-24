@@ -2,19 +2,22 @@ import axios from 'axios'
 import { useEffect, useState } from 'react';
 import { saveToLocal,getFromLocal } from './LocalStorageApi';
 
-export function useAxiosKo(url:string ,localstoragekey:string){
+export function useAxiosKo(url:string ,localstoragekey:string, method:string = 'GET'){
     const [response, setResponse]:any = useState(getFromLocal(localstoragekey))   
+
+    const headers ={   
+        method: method,
+        headers :{    
+            'Content-Type': 'application/json'
+            },
+        body : JSON.stringify({'username': null, 'password': null}),
+    }
+
+    
 
     if (!getFromLocal(localstoragekey) ){
 
-        axios.post(url,
-            {   
-                method: 'POST',
-                headers :{    
-                    'Content-Type': 'application/json'
-                },
-                body : JSON.stringify({'username': null, 'password': null}),
-            })
+        axios.post(url,headers)
             .then(function (response) {
             // handle success
             setResponse(response.data)
