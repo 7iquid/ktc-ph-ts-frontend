@@ -8,7 +8,7 @@ export const ApiContext = createContext<any>(undefined);
 export const ApiProvider:FC<{children:ReactNode;}> = ({children}) => {
     let WetherUrl:any = useGetWetherUrl('location')
     let weeatherResponse:any =useAxiosKo(WetherUrl ,'WeatherData', 'POST')
-    let newsfeed = useAxiosKo('https://ktc-ph-api.herokuapp.com/api/', 'newsfeed')
+    // let newsfeed = useAxiosKo('https://ktc-ph-api.herokuapp.com/api/', 'newsfeed')
     const [weather , setWeather] = useState(getFromLocal('WeatherData'))
 
      
