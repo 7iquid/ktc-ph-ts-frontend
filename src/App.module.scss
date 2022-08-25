@@ -1,4 +1,5 @@
 @use './constants' as const;
+@import  './constants.scss';
 
 .App {
   text-align: center;
@@ -42,6 +43,8 @@
 
 
 body{ 
+  @include layout_designer;
+  position:   relative;
   background: linear-gradient(const.$default-bg-gradient);
   height: 100vh;
 };

@@ -19,3 +19,11 @@ $default-font : Arial, sans-serif;
 	border-color: black;
 	// border: 0.03rem solid;
 }
+
+@mixin font-small-default{
+	font-family: $default-font;
+	color: gray;
+	text-decoration: none;
+	font-size: 1rem;
+	// border: 0.03rem solid;
+}

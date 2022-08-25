@@ -1,0 +1,10 @@
+@use '../../../constants' as const;
+@import  '../../../constants.scss';
+
+
+.main{
+	@include layout_designer;
+	margin: auto;
+	justify-content: center;
+	text-align:	center;
+}
