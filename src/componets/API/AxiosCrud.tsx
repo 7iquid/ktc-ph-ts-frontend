@@ -2,16 +2,26 @@ import axios from 'axios'
 import { useEffect, useState } from 'react';
 import { saveToLocal,getFromLocal } from './LocalStorageApi';
 
-function useAxiomKo(url:string, localStorageName:string='test'){
-    const [response, setResponse]:any = useState(getFromLocal('response'))   
+export function useAxiosKo(url:string ,localstoragekey:string, method:string = 'GET'){
+    const [response, setResponse]:any = useState(getFromLocal(localstoragekey))   
 
-    if (!getFromLocal('response') && getFromLocal('location')){
+    const headers ={   
+        method: method,
+        headers :{    
+            'Content-Type': 'application/json'
+            },
+        body : JSON.stringify({'username': null, 'password': null}),
+    }
 
-        axios.get(url)
+    
+
+    if (!getFromLocal(localstoragekey) ){
+
+        axios.post(url,headers)
             .then(function (response) {
             // handle success
             setResponse(response.data)
-            saveToLocal('response', response.data)
+            saveToLocal(localstoragekey, response.data)
             // console.log(response.data);
             })
             .catch(function (error) {
@@ -27,17 +37,19 @@ function useAxiomKo(url:string, localStorageName:string='test'){
    return response
 }
 
-const defaultparam ={
-    api_key :    '9f5846a3a7984c789b0105235220508&q=',
-    weather_url : 'https://api.weatherapi.com/v1/current.json?key=',
-    json_path :   '/current.json',
-}
 
-function useLoc(){
-    const [loc2, setLoc]:any = useState(getFromLocal('location'))   
+
+
+export function useGetWetherUrl(localStoragekeykey:string){
+    const defaultparam ={
+        api_key :    '9f5846a3a7984c789b0105235220508&q=',
+        weather_url : 'https://api.weatherapi.com/v1/current.json?key=',
+        json_path :   '/current.json',
+    }
+    const [loc2, setLoc]:any = useState(getFromLocal(localStoragekeykey))   
     let loc
     let pos
-    if (!getFromLocal('location')){
+    if (!getFromLocal(localStoragekeykey)){
         navigator.geolocation.getCurrentPosition(function(position) {
             pos = position
             loc =  defaultparam.weather_url + defaultparam.api_key +pos?.coords.latitude +' '+pos?.coords.longitude+ '&aqi=no'
@@ -59,31 +71,31 @@ function useLoc(){
 
 
 
-
-export function useGetAxiom(key:string){
-    // const [loc, setLoc]:any = useState()    
-    const locationloc = useLoc()
-    const response:any = useAxiomKo(locationloc)
-    const [response2, setResponse] = useState(getFromLocal('response'))  
-
-
-    useEffect(()=>{
-        // setLoc(locationloc)
-        setResponse(response)
-    },[locationloc, response])
-return response2
-}
+// export function useGetAxiom(key:string){
+//     // const [loc, setLoc]:any = useState()    
+//     const locationloc = useLoc()
+//     const response:any = useAxiomKo(locationloc, 'response')
+//     const [response2, setResponse] = useState(getFromLocal('response'))  
 
 
-const ServerModStatus = (()=>{
-    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-    // dev code
-    return true
-    } else {
-    // production code
-    return false
-}
-})
+
+//     useEffect(()=>{
+//         // setLoc(locationloc)
+//         setResponse(response)
+//     },[locationloc, response])
+// return response2
+// }
+
+
+// const ServerModStatus = (()=>{
+//     if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+//     // dev code
+//     return true
+//     } else {
+//     // production code
+//     return false
+// }
+// })
 
 
 // export function DjangoRestApi() {
@@ -108,4 +120,3 @@ const ServerModStatus = (()=>{
 //    // console.log(<div>{'First · Second'}</div>)   
 //   return <div > {Parser(forms? forms : '<>loading</>')} </div>
 //   // return <h1> Hello pogi</h1>
-

@@ -3,8 +3,9 @@ export function DevMod(){
 	
 	return<>
 
-	
-		<button >Change auth</button>
+		awd awd awd awd
+		<button >auth pass</button>
 		
 	</>
 }
+

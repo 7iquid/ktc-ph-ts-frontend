@@ -3,7 +3,7 @@ import React,{useEffect, useContext} from 'react';
 import styles from "./weather.module.scss";
 
 import CircularProgress from '@mui/material/CircularProgress';
-import {ApiContext} from './../API/weather_query'
+import {ApiContext} from './../API/ApiProvider'
 
 function Weather() {
   // let response = WeatherDataGet();
