@@ -7,7 +7,8 @@ import {ApiContext} from './../API/ApiProvider'
 
 function Weather() {
   // let response = WeatherDataGet();
-  let response:any =useContext(ApiContext)
+  let {weather} =useContext(ApiContext)
+  let response = weather
   useEffect(()=>{},[response])
   let linker ='https:'+response?.current?.condition?.icon;
     return (
@@ -38,7 +39,8 @@ export default Weather;
 
 export function SingleWeather(){
   // let response = WeatherDataGet();
-  let response:any =useContext(ApiContext)
+  let {weather} =useContext(ApiContext)
+  let response = weather
   // let response:any
   let data = <></>
   useEffect(()=>{},[response])

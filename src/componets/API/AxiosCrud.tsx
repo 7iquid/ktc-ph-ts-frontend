@@ -15,7 +15,7 @@ export function useAxiosKo(url:string ,localstoragekey:string, method:string = '
 
     
 
-    if (!getFromLocal(localstoragekey) ){
+    if (!getFromLocal(localstoragekey) && method == 'POST'){
 
         axios.post(url,headers)
             .then(function (response) {
@@ -32,6 +32,21 @@ export function useAxiosKo(url:string ,localstoragekey:string, method:string = '
             // always executed
             });
 
+    }else if(!getFromLocal(localstoragekey) && method == 'GET'){
+        axios.get(url,headers)
+            .then(function (response) {
+            // handle success
+            setResponse(response.data)
+            saveToLocal(localstoragekey, response.data)
+            // console.log(response.data);
+            })
+            .catch(function (error) {
+            // handle error
+            console.log(error);
+            })
+            .then(function () {
+            // always executed
+            });        
     }
 
    return response
@@ -53,19 +68,15 @@ export function useGetWetherUrl(localStoragekeykey:string){
         navigator.geolocation.getCurrentPosition(function(position) {
             pos = position
             loc =  defaultparam.weather_url + defaultparam.api_key +pos?.coords.latitude +' '+pos?.coords.longitude+ '&aqi=no'
-             
-            // 
+
             if(loc){
                 saveToLocal('location',loc)
                 // console.log(loc ,11231231232)
             }
-            // console.log('navigator 222 ====' ,loc)
             setLoc(loc)
 
         });
     }
-
-    // useEffect(()=>{saveToLocal('location',loc2)},[loc2])
     return loc2
 }
 

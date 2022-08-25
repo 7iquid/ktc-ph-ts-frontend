@@ -8,17 +8,22 @@ export const ApiContext = createContext<any>(undefined);
 export const ApiProvider:FC<{children:ReactNode;}> = ({children}) => {
     let WetherUrl:any = useGetWetherUrl('location')
     let weeatherResponse:any =useAxiosKo(WetherUrl ,'WeatherData', 'POST')
-    // let newsfeed = useAxiosKo('https://ktc-ph-api.herokuapp.com/api/', 'newsfeed')
-    const [weather , setWeather] = useState(getFromLocal('WeatherData'))
+    let newsfeed = useAxiosKo('https://ktc-ph-api.herokuapp.com/api/', 'newsfeed')
+   
+    
+    // const [weather , setWeather] = useState('')
 
-     
+    const context:any={
+        weather: weeatherResponse,
+        newsfeed: newsfeed,
+     }
 
-    useEffect(()=>{
-      setWeather(weeatherResponse)
-    },[weeatherResponse, WetherUrl])
+    // useEffect(()=>{
+    //   setWeather(context)
+    // },[weeatherResponse, WetherUrl, newsfeed])
     // console.log(weeatherResponse , authresponse)
     return (<>  
-                <ApiContext.Provider value={weather} >{children} </ApiContext.Provider>
+                <ApiContext.Provider value={context} >{children} </ApiContext.Provider>
 
         </>
     )
@@ -26,15 +31,15 @@ export const ApiProvider:FC<{children:ReactNode;}> = ({children}) => {
 
 
 
-const ServerModStatus = (()=>{
-    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-    // dev code
-    return true
-    } else {
-    // production code
-    return false
-}
-})
+// const ServerModStatus = (()=>{
+//     if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+//     // dev code
+//     return true
+//     } else {
+//     // production code
+//     return false
+// }
+// })
 
 
 
