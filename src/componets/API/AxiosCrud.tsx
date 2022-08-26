@@ -2,7 +2,9 @@ import axios from 'axios'
 import { useEffect, useState } from 'react';
 import { saveToLocal,getFromLocal } from './LocalStorageApi';
 
+
 export function useAxiosKo(url:string ,localstoragekey:string, method:string = 'GET'){
+    
     const [response, setResponse]:any = useState(getFromLocal(localstoragekey))   
 
     const headers ={   
@@ -21,6 +23,7 @@ export function useAxiosKo(url:string ,localstoragekey:string, method:string = '
             .then(function (response) {
             // handle success
             setResponse(response.data)
+            response.data.localstoragekey =localstoragekey
             saveToLocal(localstoragekey, response.data)
             // console.log(response.data);
             })
@@ -37,6 +40,8 @@ export function useAxiosKo(url:string ,localstoragekey:string, method:string = '
             .then(function (response) {
             // handle success
             setResponse(response.data)
+            console.log(Array.isArray(response.data),'==========>')
+            response.data.localstoragekey =localstoragekey
             saveToLocal(localstoragekey, response.data)
             // console.log(response.data);
             })
