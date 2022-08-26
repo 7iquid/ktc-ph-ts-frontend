@@ -4,18 +4,10 @@ import { ApiContext } from '../../componets/API/ApiProvider';
 import { Fade } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 
-const fadeImages = [
+const newsfeedsc = [
   {
-  url: 'images/slide_5.jpg',
-  caption: 'First Slide'
-  },
-  {
-  url: 'images/slide_6.jpg',
-  caption: 'Second Slide'
-  },
-  {
-  url: 'images/slide_7.jpg',
-  caption: 'Third Slide'
+  photo: '',
+  name: 'Loading'
   },
 ];
 
@@ -23,11 +15,14 @@ const fadeImages = [
 
 export function Home() {
   let {newsfeed} =useContext(ApiContext)
+  // const [newsfeed, setNewsfeed] = useState(newsfeedsc)
+
+  // useEffect(()=>{setNewsfeed(newsfeeds)},[newsfeeds])
   return (
     <div className={styles.main}>
       {/*<h1>SLIDES SHOW</h1>*/}
         <Fade>
-          {newsfeed.map((newsfeed:any, index:any) => (
+          {newsfeed?.map((newsfeed:any, index:any) => (
             <div className="each-fade" key={index}>
               <div className="image-container">
                 <img src={newsfeed.photo} className={styles.photo}/>
