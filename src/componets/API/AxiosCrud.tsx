@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { saveToLocal,getFromLocal } from './LocalStorageApi';
 
 
-export function useAxiosKo(url:string ,localstoragekey:string, method:string = 'GET'){
+export function useAxiosKo(url:string ,localstoragekey:string, method:string = 'GET', datelocalExpiration:number=20){
     
     const [response, setResponse]:any = useState(getFromLocal(localstoragekey))   
 
@@ -16,6 +16,7 @@ export function useAxiosKo(url:string ,localstoragekey:string, method:string = '
     }
     let axiosMethod = axios.get
     let axiosSignal = false
+    let dataToLocal
 
     if (!getFromLocal(localstoragekey) && method == 'POST' && url){
         axiosMethod = axios.post
@@ -28,9 +29,10 @@ export function useAxiosKo(url:string ,localstoragekey:string, method:string = '
         axiosMethod(url,headers)
             .then(function (response) {
             // handle success
-            
-            saveToLocal(localstoragekey, response.data)
-            setResponse(response.data)
+            dataToLocal = [{dateLocalStored :new Date()},response.data]
+            // addDate.push(response.data)
+            saveToLocal(localstoragekey, dataToLocal)
+            setResponse(dataToLocal)
             // console.log(response.data);
             })
             .catch(function (error) {

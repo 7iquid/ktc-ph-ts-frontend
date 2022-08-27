@@ -4,14 +4,18 @@ import styles from "./weather.module.scss";
 
 import CircularProgress from '@mui/material/CircularProgress';
 import {ApiContext} from './../API/ApiProvider'
-
+const JsonFind = require("json-find");
 
 function Weather() {
   // let response = WeatherDataGet();
-  let {weather} =useContext(ApiContext)
-  let response = weather
-  useEffect(()=>{},[response])
-  let linker ='https:'+response?.current?.condition?.icon;
+  let  data =useContext(ApiContext)
+  const doc = JsonFind(data);
+  let current = doc.checkKey("current")
+  let location = doc.checkKey("location")
+
+  // let response = weather
+  // useEffect(()=>{},[response])
+  let linker ='https:'+current?.condition?.icon;
     return (
       <div   className={styles.style}  >
         <div >
@@ -19,17 +23,17 @@ function Weather() {
             <img src={linker}></img>
           </div>  
           <div >
-            {response?.location.region}
+            {location?.region}
           </div>
         </div>
         <div >
               <ul>
-                <li> Condition : {response?.current.condition.text}</li>
-                <li> Wind  : {response?.current?.wind_kph}</li>
-                <li> Wind Direction : {response?.current?.wind_dir}</li>
-                <li> Humidity : {response?.current?.humidity}</li>
-                <li> TempC : {response?.current.feelslike_c}</li>
-                <li> Date/Time : {response?.location.localtime}</li>
+                <li> Condition : {current.condition.text}</li>
+                <li> Wind  : {current?.wind_kph}</li>
+                <li> Wind Direction : {current?.wind_dir}</li>
+                <li> Humidity : {current?.humidity}</li>
+                <li> TempC : {current.feelslike_c}</li>
+                <li> Date/Time : {location.localtime}</li>
               </ul>
         </div>
 
@@ -38,20 +42,22 @@ function Weather() {
 }
 export default Weather;
 
+
 export function SingleWeather(){
-  // let response = WeatherDataGet();
-  let {weather} =useContext(ApiContext)
-  let response = weather
-  // let response:any
-  let data = <></>
-  useEffect(()=>{},[response])
-  let linker ='https:'+response?.current?.condition?.icon;
-  if (!response){data = <CircularProgress />}
-  else{data= 
+  let  data =useContext(ApiContext)
+  const doc = JsonFind(data);
+  let current = doc.checkKey("current")
+  let location = doc.checkKey("location")
+
+  let data2 = <></>
+  // useEffect(()=>{},[response])
+  let linker ='https:'+current?.condition?.icon;
+  if (!location){data2 = <CircularProgress />}
+  else{data2= 
       <div className={styles.weatherBox}>
         <div> <img className={styles.weathericon} src={linker}></img></div>
-        <div className={styles.weathertext} > {response?.location.country}</div>
+        <div className={styles.weathertext} > {location.country}</div>
       </div>}  
-  return(<>{data}</>
+  return(<>{data2}</>
   )
 }
