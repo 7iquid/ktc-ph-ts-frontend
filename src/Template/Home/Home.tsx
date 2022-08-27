@@ -9,10 +9,8 @@ const JsonFind = require("json-find");
 
 
 export function Home() {
-  let {newsfeed} =useContext(ApiContext)
-  let renderit = false
-  if(newsfeed){ newsfeed =newsfeed[1]; renderit =true}
-  console.log(newsfeed)
+  let {newsfeed,renderit = false} =useContext(ApiContext)
+  if(newsfeed){ newsfeed =newsfeed?.responsedata; renderit =true}
   return (
     <div className={styles.main}>
       {/*<h1>SLIDES SHOW</h1>*/}
