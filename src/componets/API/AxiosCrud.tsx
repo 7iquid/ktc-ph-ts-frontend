@@ -14,17 +14,23 @@ export function useAxiosKo(url:string ,localstoragekey:string, method:string = '
             },
         body : JSON.stringify({'username': null, 'password': null}),
     }
+    let axiosMethod = axios.get
+    let axiosSignal = false
 
-    
-
-    if (!getFromLocal(localstoragekey) && method == 'POST'){
-
-        axios.post(url,headers)
+    if (!getFromLocal(localstoragekey) && method == 'POST' && url){
+        axiosMethod = axios.post
+        axiosSignal = true
+    }else if(!getFromLocal(localstoragekey) && method == 'GET' && url){
+        axiosMethod = axios.get
+        axiosSignal = true
+    } 
+    if(axiosSignal){
+        axiosMethod(url,headers)
             .then(function (response) {
             // handle success
-            setResponse(response.data)
-            response.data.localstoragekey =localstoragekey
+            
             saveToLocal(localstoragekey, response.data)
+            setResponse(response.data)
             // console.log(response.data);
             })
             .catch(function (error) {
@@ -33,28 +39,9 @@ export function useAxiosKo(url:string ,localstoragekey:string, method:string = '
             })
             .then(function () {
             // always executed
-            });
-
-    }else if(!getFromLocal(localstoragekey) && method == 'GET'){
-        axios.get(url,headers)
-            .then(function (response) {
-            // handle success
-            setResponse(response.data)
-            console.log(Array.isArray(response.data),'==========>')
-            response.data.localstoragekey =localstoragekey
-            saveToLocal(localstoragekey, response.data)
-            // console.log(response.data);
-            })
-            .catch(function (error) {
-            // handle error
-            console.log(error);
-            })
-            .then(function () {
-            // always executed
-            });        
+            });          
     }
-
-   return response
+    return response
 }
 
 

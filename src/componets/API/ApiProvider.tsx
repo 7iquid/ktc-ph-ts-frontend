@@ -8,7 +8,7 @@ const urlNewsfeeds = 'https://ktc-ph-api.herokuapp.com/api/'
 
 export const ApiProvider:FC<{children:ReactNode;}> = ({children}) => {
     let WetherUrl:any = useGetWetherUrl('location')
-    let weeatherResponse:any =useAxiosKo(WetherUrl ,'WeatherData', 'POST')
+    let weeatherResponse:any =useAxiosKo(WetherUrl ,'WeatherData', 'POST' )
     let newsfeed = useAxiosKo(urlNewsfeeds, 'newsfeed')
    
     

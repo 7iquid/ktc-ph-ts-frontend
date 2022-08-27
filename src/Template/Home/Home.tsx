@@ -5,21 +5,26 @@ import { Fade } from 'react-slideshow-image';
 import { removeFromLocal } from '../../componets/API/LocalStorageApi';
 import 'react-slideshow-image/dist/styles.css'
 
-const newsfeedsc = [
-  {
-  photo: '',
-  name: 'Loading'
-  },
-];
+// const JsonSearch = require('search-array').default
+
+const objectArray = [
+  {id:1, title: 'Good book', author: 'Jim', colors: 'red'},
+  {id:2, title: 'Interesting Movie', author: 'Bob', colors: 'dark red'},
+  {id:3, title: 'Good Series', author: 'Alex', colors: 'dark blue'},
+  {id:4, title: 'Something', author: 'Feri', colors: ['red', 'blue']}
+]
 
 
-// function useRefreshState(urlNewsfeeds){
-//   const [refresh , setUrlNewsfeedsrefresh] = useState(()=>{
-//      const ok = 'ok'
-//      return ok
-//   })
-//   return [refresh , setUrlNewsfeedsrefresh]
-// }
+// const searcher = new JsonSearch(objectArray)
+// let foundObjects = searcher.query('good')
+
+// foundObjects = searcher.query('good -red')
+// console.log(foundObjects) // prints item 3
+
+
+
+
+
 
 
 export function Home() {

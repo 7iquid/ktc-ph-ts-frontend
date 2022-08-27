@@ -5,6 +5,7 @@ import styles from "./weather.module.scss";
 import CircularProgress from '@mui/material/CircularProgress';
 import {ApiContext} from './../API/ApiProvider'
 
+
 function Weather() {
   // let response = WeatherDataGet();
   let {weather} =useContext(ApiContext)
