@@ -1,12 +1,18 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react';
-import { saveToLocal,getFromLocal } from './LocalStorageApi';
+import { saveToLocal,getFromLocal,removeFromLocal } from './LocalStorageApi';
+
+interface axiosReq{
+    url:string ,
+    localstoragekey:string, 
+    method:string , 
+    datelocalExpiration:number,
+}
 
 
-export function useAxiosKo(url:string ,localstoragekey:string, method:string = 'GET', datelocalExpiration:number=20){
-    
-    const [response, setResponse]:any = useState(getFromLocal(localstoragekey))   
-
+export function useAxiosKo(Args:axiosReq) {
+    const {url,localstoragekey, method , datelocalExpiration} = Args
+    const [response, setResponse] = useState(getFromLocal(localstoragekey))   
     const headers ={   
         method: method,
         headers :{    
@@ -14,9 +20,21 @@ export function useAxiosKo(url:string ,localstoragekey:string, method:string = '
             },
         body : JSON.stringify({'username': null, 'password': null}),
     }
+
     let axiosMethod = axios.get
     let axiosSignal = false
-    let dataToLocal
+    
+
+    if (getFromLocal(localstoragekey)){
+        let {dateLocalStored} = getFromLocal(localstoragekey)
+        dateLocalStored =Date.parse(dateLocalStored)
+        let CurrentDate:any = new Date()
+        let MinutedUpCounter = (((CurrentDate - dateLocalStored)/1000)/60)
+        if(MinutedUpCounter>datelocalExpiration){
+            removeFromLocal(localstoragekey)
+        }
+    }
+
 
     if (!getFromLocal(localstoragekey) && method == 'POST' && url){
         axiosMethod = axios.post
@@ -29,7 +47,10 @@ export function useAxiosKo(url:string ,localstoragekey:string, method:string = '
         axiosMethod(url,headers)
             .then(function (response) {
             // handle success
-            dataToLocal = [{dateLocalStored :new Date()},response.data]
+            let dataToLocal = {
+                dateLocalStored :new Date(),
+                responsedata:response.data
+            }
             // addDate.push(response.data)
             saveToLocal(localstoragekey, dataToLocal)
             setResponse(dataToLocal)
@@ -73,55 +94,3 @@ export function useGetWetherUrl(localStoragekeykey:string){
     }
     return loc2
 }
-
-
-
-// export function useGetAxiom(key:string){
-//     // const [loc, setLoc]:any = useState()    
-//     const locationloc = useLoc()
-//     const response:any = useAxiomKo(locationloc, 'response')
-//     const [response2, setResponse] = useState(getFromLocal('response'))  
-
-
-
-//     useEffect(()=>{
-//         // setLoc(locationloc)
-//         setResponse(response)
-//     },[locationloc, response])
-// return response2
-// }
-
-
-// const ServerModStatus = (()=>{
-//     if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-//     // dev code
-//     return true
-//     } else {
-//     // production code
-//     return false
-// }
-// })
-
-
-// export function DjangoRestApi() {
-//   const [forms, setForms] = useState<any>()
-//    useEffect(()=>{
-//           axios.get('http://127.0.0.1:8000/dtc/' )
-//           .then(function (response) {
-//           // handle success
-//           setForms(response.data)
-
-//           // console.log(response.data);
-//           })
-//           .catch(function (error) {
-//           // handle error
-//           console.log(error);
-//           })
-//           .then(function () {
-//           // always executed
-//           });
-  
-//    },[])    
-//    // console.log(<div>{'First · Second'}</div>)   
-//   return <div > {Parser(forms? forms : '<>loading</>')} </div>
-//   // return <h1> Hello pogi</h1>
