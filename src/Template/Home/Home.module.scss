@@ -4,15 +4,16 @@
 
 .main{
 	@include layout_designer;
+	height: 350px;
 	// flex-wrap: wrap;
 	margin: auto;
-	justify-content: center;
-	text-align:	center;
-	display: flex;
+	// justify-content: center;
+	// text-align:	center;
+	// display: flex;
 }
 .subcontainer{
 	@include layout_designer;
-	// display: contents
+	display: contents
 }
 
 .newsfeed{
@@ -26,5 +27,9 @@
 	@include layout_designer;
 	height: 300px;
 	width: 500px;
+}
+
+.rowHeight{
+	height: 300px;
 }
 
