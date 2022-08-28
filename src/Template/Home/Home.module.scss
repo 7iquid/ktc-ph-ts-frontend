@@ -4,12 +4,27 @@
 
 .main{
 	@include layout_designer;
+	// flex-wrap: wrap;
+	margin: auto;
+	justify-content: center;
+	text-align:	center;
+	display: flex;
+}
+.subcontainer{
+	@include layout_designer;
+	// display: contents
+}
+
+.newsfeed{
+	@include layout_designer;
 	margin: auto;
 	justify-content: center;
 	text-align:	center;
 }
 
 .photo{
+	@include layout_designer;
 	height: 300px;
 	width: 500px;
 }
+
